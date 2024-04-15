@@ -1,109 +1,91 @@
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { OL } from "@/components/ui/ol";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { H1 } from "@/components/ui/typography/H1";
 import { H3 } from "@/components/ui/typography/H3";
 import { P } from "@/components/ui/typography/P";
+import { Small } from "@/components/ui/typography/Small";
 
 export default function Home() {
-  const sections = [
-    {
-      title: "About Me",
-      content:
-        "Provide a brief introduction and overview of your professional background, skills, and interests.",
-    },
-    {
-      title: "Projects",
-      content:
-        "Showcase your notable projects, describing the technologies used, your role, and the impact of each project.",
-    },
-    {
-      title: "Portfolio",
-      content: `Include a curated selection of your best work, providing links to live demos or GitHub repositories.`,
-    },
-    {
-      title: "Blog or Articles",
-      content: `Share your insights, experiences, and expertise through blog posts or articles related to software development or technology.`,
-    },
-    {
-      title: "Resume/CV",
-      content: `Offer a downloadable version of your resume for visitors who may want to learn more about your qualifications.`,
-    },
-    {
-      title: "Contact Information",
-      content: `Make it easy for potential employers or collaborators to reach out to you by providing your email address or a contact form.`,
-    },
-  ];
   return (
-    <main className="flex min-h-screen flex-col items-start justify-start basis-1/3">
-      <H1>John Carmack</H1>
-      <Separator />
-      <H3>Software Engineer</H3>
-      <P>
-        With a strong background in full-stack software engineering and a
-        specialization in Frontend Architecture, I offer a wealth of experience
-        in designing, developing, and maintaining large-scale marketing
-        platforms. In my work with Tahzoo as Development Team Lead, I
-        successfully implemented complex projects for two S&P 500 clients using
-        Next.js, AWS, and ContentStack. My technical expertise extends to
-        React.js, Next.js, AWS, Azure, and relational databases.
-      </P>
-      <P>
-        My skill set includes designing and developing integrations (ETL
-        pipelines) to meet varied user needs in terms of functionality,
-        performance, scalability, and reliability. With a strong understanding
-        of object-oriented programming and functional programming concepts, I am
-        proficient in writing high-quality, scalable, testable, maintainable,
-        and reliable code. I am also experienced in setting up and maintaining
-        CI/CD pipelines for smooth integration and deployment of code changes
-        using AWS and GitLab. Leadership and project management are integral to
-        my role, where I lead a team of developers, conducting code reviews,
-        peer inspections, and technical design/specifications. I place a high
-        emphasis on cross-functional skill development and best practices to
-        ensure high standards are met across the department. Furthermore, I am
-        proficient in data analysis and data quality tests, capable of creating
-        audits for ETLs, and have experience in designing and implementing
-        solutions that process large volumes of data. My ability to work
-        collaboratively and drive results, even under challenging circumstances,
-        has earned me accolades and trust from clients and team members alike.
-        With a Bachelor&apos;s degree in Computer Science, over six years of
-        full-stack software engineering experience, and a proven track record in
-        managing and delivering large-scale projects, I am prepared to take on
-        the challenge of the Senior Software Developer role at Welltower and
-        contribute to your mission of transforming health care infrastructure.
-      </P>
-      <Tabs defaultValue="about-me">
-        <TabsList>
-          <TabsTrigger value="about-me">About Me</TabsTrigger>
-        </TabsList>
-        <TabsContent value="about-me">
-          About Me: Provide a brief introduction and overview of your
-          professional background, skills, and interests.
-        </TabsContent>
-
-        <TabsContent value="">
-          Projects: Showcase your notable projects, describing the technologies
-          used, your role, and the impact of each project.
-        </TabsContent>
-        <TabsContent value="">
-          Portfolio: Include a curated selection of your best work, providing
-          links to live demos or GitHub repositories.
-        </TabsContent>
-        <TabsContent value="">
-          Blog or Articles: Share your insights, experiences, and expertise
-          through blog posts or articles related to software development or
-          technology.
-        </TabsContent>
-        <TabsContent value="">
-          Resume/CV: Offer a downloadable version of your resume for visitors
-          who may want to learn more about your qualifications.
-        </TabsContent>
-        <TabsContent value="">
-          Contact Information: Make it easy for potential employers or
-          collaborators to reach out to you by providing your email address or a
-          contact form.
-        </TabsContent>
-      </Tabs>
-    </main>
+    <>
+      <Card variant="ghost" className="rounded-2xl p-1">
+        <CardHeader className="bg-primary m-6 rounded-t-xl"></CardHeader>
+        <CardContent className=" flex flex-col gap-4">
+          <div className="grid grid-cols-2">
+            <div className="bg-gradient-to-b from-gray-400 from-70% to-black to-100%" />
+            <div className="bg-primary/40 py-2 px-4">
+              <Small>PHRASE</Small>
+              <Skeleton className="my-1 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+              <Skeleton className="mt-2 mb-6 h-1 w-full" />
+              <Small>REDWIWES</Small>
+              <Skeleton className="my-1 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+              <Skeleton className="mt-2 mb-6 h-1 w-full" />
+              <Small>DABE WNO TONSBQ</Small>
+              <Skeleton className="my-2 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+            </div>
+          </div>
+          <div className="grid grid-cols-2">
+            {/* <div className="bg-primary/70" /> */}
+            {/* <div className="bg-accent/80" /> */}
+            <div className="from-primary/70 to-muted bg-gradient-to-b from-5% to-60%" />
+            <div className="bg-primary/40 py-2 px-4">
+              <Small className="mt-6 h-1 w-full">SIXEEP</Small>
+              <Skeleton className="my-1 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+              <Skeleton className="mt-2 mb-6 h-1 w-full" />
+              <Small>DABE WNOBS TSBQ</Small>
+              <Skeleton className="my-2 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 ">
+            <div className="bg-primary/40 rounded-bl-xl py-2  px-3">
+              <Skeleton className="my-4 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+              <Skeleton className="my-2 h-1 w-full" />
+            </div>
+            <div className="bg-muted/70 ml-5  rounded-br-xl" />
+          </div>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent></CardContent>
+      </Card>
+      <div className="text-secondary-foreground drop w-full text-justify text-8xl font-extrabold tracking-wide">
+        A M I E
+      </div>
+      <div className="flex justify-between">
+        <div className="bg-secondary/50 size-11 rounded-full" />
+        <div className="bg-secondary/60 size-11 rounded-full" />
+        <div className="bg-secondary/70 size-11 rounded-full" />
+        <div className="bg-secondary/80 size-11 rounded-full" />
+        <div className="bg-secondary/90 size-11 rounded-full" />
+        <div className="bg-secondary size-11 rounded-full" />
+      </div>
+      <div className="flex justify-between">
+        <div className="bg-accent/50 size-11 rounded-full" />
+        <div className="bg-accent/60 size-11 rounded-full" />
+        <div className="bg-accent/70 size-11 rounded-full" />
+        <div className="bg-accent/80 size-11 rounded-full" />
+        <div className="bg-accent/90 size-11 rounded-full" />
+        <div className="bg-accent size-11 rounded-full" />
+      </div>
+      <div className="flex justify-between">
+        <div className="bg-primary/50 size-11 rounded-full" />
+        <div className="bg-primary/50 size-11 rounded-full" />
+        <div className="bg-primary/50 size-11 rounded-full" />
+        <div className="bg-primary/50 size-11 rounded-full" />
+        <div className="bg-foreground/90 size-11 rounded-full" />
+        <div className="bg-foreground size-11 rounded-full" />
+      </div>
+    </>
   );
 }

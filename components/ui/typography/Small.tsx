@@ -1,3 +1,15 @@
-export function Small({ children }: { children: React.ReactNode }) {
-  return <small className="text-sm font-medium leading-none">{children}</small>;
+import { cn } from "@/lib/utils";
+
+export function Small({
+  className,
+  children,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <small className={cn("text-xs font-medium leading-none", className)}>
+      {children}
+    </small>
+  );
 }

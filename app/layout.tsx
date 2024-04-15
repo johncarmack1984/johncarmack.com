@@ -1,5 +1,9 @@
 import "./globals.css";
+
 import { Inter } from "next/font/google";
+
+import LeftColumn from "./left-column";
+import RightColumn from "./right-column";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex min-h-screen flex-col items-start justify-start p-24`}
+        className={`${inter.className} mx-auto flex min-h-screen flex-col items-start justify-start p-32`}
       >
-        <div className="flex">
-          <div className="basis-1/3">LLIP</div>
-          {children}
-          <div className="flex flex-col basis-1/3">
-            <div className="bg-black h-6 w-6 size-6 rounded-full" />
+        <div className="mx-auto flex gap-20">
+          <div className="flex basis-3/12 flex-col gap-8">
+            <LeftColumn />
+          </div>
+          <div className="flex basis-5/12 flex-col gap-8">{children}</div>
+          <div className="flex basis-3/12 flex-col">
+            <RightColumn />
           </div>
         </div>
       </body>
