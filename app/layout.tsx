@@ -15,7 +15,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>{children}</body>
+      <body
+        className={`${inter.className} flex min-h-screen flex-col items-start justify-start p-24`}
+      >
+        <div className="flex">
+          <div className="basis-1/3">LLIP</div>
+          {children}
+          <div className="flex flex-col basis-1/3">
+            <div className="bg-black h-6 w-6 size-6 rounded-full" />
+          </div>
+        </div>
+      </body>
     </html>
   );
 }

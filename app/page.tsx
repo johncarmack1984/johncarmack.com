@@ -35,7 +35,7 @@ export default function Home() {
     },
   ];
   return (
-    <main className="flex min-h-screen flex-col items-start justify-start p-24 dark">
+    <main className="flex min-h-screen flex-col items-start justify-start basis-1/3">
       <H1>John Carmack</H1>
       <Separator />
       <H3>Software Engineer</H3>
@@ -66,7 +66,7 @@ export default function Home() {
         solutions that process large volumes of data. My ability to work
         collaboratively and drive results, even under challenging circumstances,
         has earned me accolades and trust from clients and team members alike.
-        With a Bachelor's degree in Computer Science, over six years of
+        With a Bachelor&apos;s degree in Computer Science, over six years of
         full-stack software engineering experience, and a proven track record in
         managing and delivering large-scale projects, I am prepared to take on
         the challenge of the Senior Software Developer role at Welltower and
@@ -104,12 +104,6 @@ export default function Home() {
           contact form.
         </TabsContent>
       </Tabs>
-      <P>
-        Having a well-designed and informative personal website can help you
-        stand out and provide additional context for your GitHub projects and
-        contributions. It allows potential employers to learn more about you and
-        your work, increasing your chances of making a strong impression.
-      </P>
     </main>
   );
 }
