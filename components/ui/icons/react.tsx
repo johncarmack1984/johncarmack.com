@@ -3,11 +3,7 @@ import type { ProjectIcon } from "./types";
 
 const ReactIcon: ProjectIcon = ({ className, ...props }) => {
   return (
-    <svg
-      viewBox="0 0 128 128"
-      className={cn("size-6 fill-current", className)}
-      {...props}
-    >
+    <svg viewBox="0 0 128 128" className={cn(className)} {...props}>
       <title>React</title>
       <g>
         <circle cx="64" cy="64" r="11.4"></circle>

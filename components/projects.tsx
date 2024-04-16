@@ -5,6 +5,7 @@ import { GlobeIcon } from "@radix-ui/react-icons";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -98,7 +99,11 @@ function Project({
       </CardHeader>
       <CardContent className="text-sm">{description}</CardContent>
 
-      <CardFooter className="flex gap-2">{platforms.map(Platform)}</CardFooter>
+      <CardFooter className="flex gap-2">
+        <CardDescription className="flex items-center gap-[6px]">
+          built for {platforms.map(Platform)}
+        </CardDescription>
+      </CardFooter>
     </Card>
   );
 }

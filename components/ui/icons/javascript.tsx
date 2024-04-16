@@ -6,7 +6,7 @@ const JavaScriptIcon: ProjectIcon = ({ className, ...props }) => {
     <svg
       xlinkTitle="JavaScript"
       viewBox="0 0 128 128"
-      className={cn("size-6", className)}
+      className={cn(className)}
       {...props}
     >
       <title>JavaScript</title>
