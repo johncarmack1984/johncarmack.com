@@ -1,5 +1,23 @@
 import { Card } from "./ui/card";
 
+const skills = [
+  { name: "JavaScript" },
+  { name: "React" },
+  { name: "Node.js" },
+  { name: "Python" },
+  { name: "Django" },
+  { name: "PostgreSQL" },
+  { name: "Rust" },
+];
+
+function Skill({ name }: { name: string }) {
+  return (
+    <Card key={name} className="rounded-md p-4">
+      <h3 className="font-semibold">{name}</h3>
+    </Card>
+  );
+}
+
 export default function Skills() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32" id="skills">
@@ -8,24 +26,7 @@ export default function Skills() {
           Skills
         </h2>
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          <Card className="rounded-md p-4">
-            <h3 className="font-semibold">JavaScript</h3>
-          </Card>
-          <Card className="rounded-md p-4">
-            <h3 className="font-semibold">React</h3>
-          </Card>
-          <Card className="rounded-md p-4">
-            <h3 className="font-semibold">Node.js</h3>
-          </Card>
-          <Card className="rounded-md p-4">
-            <h3 className="font-semibold">Python</h3>
-          </Card>
-          <Card className="rounded-md p-4">
-            <h3 className="font-semibold">Django</h3>
-          </Card>
-          <Card className="rounded-md p-4">
-            <h3 className="font-semibold">PostgreSQL</h3>
-          </Card>
+          {skills.map(Skill)}
         </div>
       </div>
     </section>
