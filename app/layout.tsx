@@ -4,6 +4,7 @@ import {
   Inter as FontSans,
   Ibarra_Real_Nova as FontSerif,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Topbar />
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
