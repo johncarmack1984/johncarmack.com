@@ -5,6 +5,7 @@ import {
   Ibarra_Real_Nova as FontSerif,
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Topbar />
           {children}
         </ThemeProvider>
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
