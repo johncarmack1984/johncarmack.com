@@ -2,7 +2,7 @@ import Link from "next/link";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 
 import ModeToggle from "@/components/theme-toggle";
-import CodeIcon from "@/components/ui/icons/code-icon";
+import CodeIcon from "@/components/ui/icons/code";
 
 // prettier-ignore
 const navLinks = [
