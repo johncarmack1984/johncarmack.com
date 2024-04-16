@@ -3,37 +3,14 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const cardVariants = cva("", {
-  variants: {
-    variant: {
-      default: "bg-card text-card-foreground ",
-      primary:
-        "bg-primary text-primary-foreground [background-image:url('/assets/patterns/45-degree-fabric-light.png')]",
-      secondary:
-        "bg-secondary text-secondary-foreground [background-image:url('/assets/patterns/45-degree-fabric-dark.png')]",
-      muted:
-        "bg-muted text-muted-foreground [background-image:url('/assets/patterns/45-degree-fabric-dark.png')]",
-      accent:
-        "bg-accent text-accent-foreground [background-image:url('/assets/patterns/45-degree-fabric-dark.png')]",
-      ghost: "bg-background text-foreground",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
-
-export interface CardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {}
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, ...props }, ref) => (
+  ({ className, ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
-        cardVariants({ variant }),
-        "rounded-sm [filter:drop-shadow(-0.4rem_0.3rem_3px_var(--theme-color-foreground))]",
+        "bg-card text-card-foreground rounded-xl border border-solid shadow",
         className,
       )}
       {...props}
@@ -60,10 +37,7 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
-      className,
-    )}
+    className={cn("font-semibold leading-none tracking-tight", className)}
     {...props}
   />
 ));
@@ -95,7 +69,7 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(" flex items-center p-6 pt-0", className)}
+    className={cn("flex items-center p-6 pt-0", className)}
     {...props}
   />
 ));

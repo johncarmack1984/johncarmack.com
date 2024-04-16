@@ -55,76 +55,13 @@
   }
 }
 
-:root {
-  --theme-color-background: hsl(72 9% 89%);
-  --theme-color-foreground: hsl(65, 16%, 15%);
-
-  --theme-color-card: hsl(46, 30%, 83%);
-  --theme-color-card-foreground: hsl(222.2 84% 4.9%);
-
-  --theme-color-popover: hsl(0 0% 100%);
-  --theme-color-popover-foreground: hsl(222.2 84% 4.9%);
-
-  --theme-color-primary: hsl(76, 10%, 58%);
-  --theme-color-primary-foreground: hsl(39, 35%, 24%);
-
-  --theme-color-secondary: hsl(166, 19%, 21%);
-  --theme-color-secondary-foreground: hsl(46, 30%, 83%);
-
-  --theme-color-muted: hsl(92, 9%, 43%);
-  --theme-color-muted-foreground: hslhsl(72 9% 89%);
-
-  --theme-color-accent: hsl(33, 30%, 55%);
-  --theme-color-accent-foreground: hsl(46, 30%, 83%);
-
-  --theme-color-destructive: hsl(0 84.2% 60.2%);
-  --theme-color-destructive-foreground: hsl(210 40% 98%);
-
-  --theme-color-border: hsl(72, 9%, 89%);
-  --theme-color-input: hsl(46, 30%, 83%);
-  --theme-color-ring: hsl(222.2 84% 4.9%);
-}
-
-[data-theme="dark"],
-[data-theme="dark"] :root {
-  --theme-color-background: hsl(222.2 84% 4.9%);
-  --theme-color-foreground: hsl(210 40% 98%);
-
-  --theme-color-card: hsl(222.2 84% 4.9%);
-  --theme-color-card-foreground: hsl(210 40% 98%);
-
-  --theme-color-popover: hsl(222.2 84% 4.9%);
-  --theme-color-popover-foreground: hsl(210 40% 98%);
-
-  --theme-color-primary: hsl(210 40% 98%);
-  --theme-color-primary-foreground: hsl(222.2 47.4% 11.2%);
-
-  --theme-color-secondary: hsl(217.2 32.6% 17.5%);
-  --theme-color-secondary-foreground: hsl(210 40% 98%);
-
-  --theme-color-muted: hsl(217.2 32.6% 17.5%);
-  --theme-color-muted-foreground: hsl(215 20.2% 65.1%);
-
-  --theme-color-accent: hsl(217.2 32.6% 17.5%);
-  --theme-color-accent-foreground: hsl(210 40% 98%);
-
-  --theme-color-destructive: hsl(0 62.8% 30.6%);
-  --theme-color-destructive-foreground: hsl(210 40% 98%);
-
-  --theme-color-border: hsl(217.2 32.6% 17.5%);
-  --theme-color-input: hsl(217.2 32.6% 17.5%);
-  --theme-color-ring: hsl(212.7 26.8% 83.9%);
-}
-
 * {
   @apply border-border;
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply text-foreground from-background to-muted-foreground bg-gradient-to-r;
-  font-feature-settings:
-    "rlig" 1,
-    "calt" 1;
+  @apply text-foreground bg-background;
 }
 
 .container {
@@ -143,4 +80,81 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* https://coolors.co/ffffff-002f31-62752b-3d82bf-03343b-edaa74-a4d4fa-889942-fbe7c9-01424c */
+:root {
+  --color-001: hsl(0, 0%, 100%);
+  --color-002: hsl(180, 100%, 3%);
+  --color-003: hsl(73, 46%, 32%);
+  --color-004: hsl(35, 9.1%, 98%);
+  --color-005: hsl(211, 78%, 64%);
+  --color-006: hsl(187, 81%, 15%);
+  --color-007: hsl(3, 5.3%, 44.7%);
+  --color-008: hsl(22, 59%, 33%);
+  --color-009: hsl(350, 5.9%, 90%);
+  --color-010: hsl(73, 46%, 32%);
+  --color-011: hsl(222, 47.4%, 11.2%);
+  --color-012: hsl(2, 5.4%, 63.9%);
+  --color-013: hsl(348, 61%, 33%);
+}
+
+[data-theme="light"] {
+  --theme-color-background: var(--color-001);
+  --theme-color-foreground: var(--color-002);
+
+  --theme-color-card: var(--color-001);
+  --theme-color-card-foreground: var(--color-002);
+
+  --theme-color-popover: var(--color-001);
+  --theme-color-popover-foreground: var(--color-002);
+
+  --theme-color-primary: var(--color-003);
+  --theme-color-primary-foreground: var(--color-004);
+
+  --theme-color-secondary: var(--color-005);
+  --theme-color-secondary-foreground: var(--color-006);
+
+  --theme-color-muted: var(--color-005);
+  --theme-color-muted-foreground: var(--color-007);
+
+  --theme-color-accent: var(--color-005);
+  --theme-color-accent-foreground: var(--color-006);
+
+  --theme-color-destructive: var(--color-008);
+  --theme-color-destructive-foreground: var(--color-004);
+
+  --theme-color-border: var(--color-009);
+  --theme-color-input: var(--color-009);
+  --theme-color-ring: var(--color-003);
+}
+
+[data-theme="dark"] {
+  --theme-color-background: var(--color-002);
+  --theme-color-foreground: var(--color-004);
+
+  --theme-color-card: var(--color-002);
+  --theme-color-card-foreground: var(--color-004);
+
+  --theme-color-popover: var(--color-002);
+  --theme-color-popover-foreground: var(--color-004);
+
+  --theme-color-primary: var(--color-010);
+  --theme-color-primary-foreground: var(--color-004);
+
+  --theme-color-secondary: var(--color-011);
+  --theme-color-secondary-foreground: var(--color-004);
+
+  --theme-color-muted: var(--color-011);
+  --theme-color-muted-foreground: var(--color-012);
+
+  --theme-color-accent: var(--color-011);
+  --theme-color-accent-foreground: var(--color-004);
+
+  --theme-color-destructive: var(--color-013);
+  --theme-color-destructive-foreground: var(--color-004);
+
+  --theme-color-border: var(--color-011);
+  --theme-color-input: var(--color-011);
+  --theme-color-ring: var(--color-010);
 }
