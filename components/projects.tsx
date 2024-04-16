@@ -1,4 +1,5 @@
 import { Fragment, Key } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { GlobeIcon } from "@radix-ui/react-icons";
 
@@ -24,7 +25,7 @@ const projects = [
   {
     title: "Lux",
     description: "A light controller for USB DMX devices.",
-    image: "/assets/img/lux.png",
+    image: "/assets/img/lux.webp",
     href: "https://github.com/johncarmack1984/lux",
     platforms: [AppleIcon],
     skills: [Rust, ReactIcon],
@@ -32,7 +33,7 @@ const projects = [
   {
     title: "Skill Builder",
     description: "Character skill builder for Fate-based TTRPGs.",
-    image: "/assets/img/toh-skill-builder.png",
+    image: "/assets/img/toh-skill-builder.webp",
     href: "https://toh-skill-builder.netlify.app/",
     skills: [JavaScriptIcon, VueIcon],
     platforms: [WebIcon],
@@ -40,7 +41,7 @@ const projects = [
   {
     title: "Deep Freeze",
     description: "Migrate from DropBox Business to S3 Deep Archive.",
-    image: "/assets/img/deep-freeze.png",
+    image: "/assets/img/deep-freeze.webp",
     href: "https://github.com/johncarmack1984/deep-freeze",
     skills: [Rust, TerraformIcon],
     platforms: [CommandPromptIcon],
@@ -81,17 +82,17 @@ function Project({
   return (
     <Card key={href} className="rounded-md">
       <CardHeader>
-        <Link href={href}>
-          <img
+        <Link aria-label={title} href={href}>
+          <Image
             alt={title}
             className="aspect-video h-32 w-full rounded-md object-cover transition-transform duration-500 hover:scale-105"
-            height="200"
+            height={720}
+            width={1080}
             src={image}
             style={{
               objectFit: "cover",
               objectPosition: "0 0",
             }}
-            width="200"
           />
         </Link>
         <CardTitle className="mt-4 text-base font-semibold">{title}</CardTitle>

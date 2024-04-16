@@ -1,9 +1,11 @@
 "use client";
 
 import * as React from "react";
+import useSunHidden from "@/hooks/useSunHidden";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
+import { cva } from "class-variance-authority";
 
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,18 +14,26 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function ModeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
+const iconVariants = cva(["absolute", "size-[1.2rem]", "transition-all"], {
+  variants: {
+    hidden: {
+      true: ["opacity-0", "-rotate-180"],
+      false: ["opacity-100", "rotate-0"],
+    },
+  },
+  defaultVariants: {
+    hidden: true,
+  },
+});
 
+export default function ModeToggle() {
+  const { sunHidden, setTheme } = useSunHidden();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          {resolvedTheme === "dark" ? (
-            <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] transition-all" />
-          ) : (
-            <SunIcon className="h-[1.2rem] w-[1.2rem] transition-all" />
-          )}
+        <Button className="" variant="outline" size="icon">
+          <SunIcon className={cn(iconVariants({ hidden: sunHidden }))} />
+          <MoonIcon className={cn(iconVariants({ hidden: !sunHidden }))} />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>

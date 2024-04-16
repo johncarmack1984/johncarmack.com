@@ -97,9 +97,7 @@ body {
   --color-011: hsl(222, 47.4%, 11.2%);
   --color-012: hsl(2, 5.4%, 63.9%);
   --color-013: hsl(348, 61%, 33%);
-}
 
-[data-theme="light"] {
   --theme-color-background: var(--color-001);
   --theme-color-foreground: var(--color-002);
 
@@ -129,34 +127,32 @@ body {
   --theme-color-ring: var(--color-003);
 }
 
-@media (prefers-color-scheme: dark) {
-  [data-theme="dark"] {
-    --theme-color-background: var(--color-002);
-    --theme-color-foreground: var(--color-004);
+[data-theme="dark"] {
+  --theme-color-background: var(--color-002);
+  --theme-color-foreground: var(--color-004);
 
-    --theme-color-card: var(--color-002);
-    --theme-color-card-foreground: var(--color-004);
+  --theme-color-card: var(--color-002);
+  --theme-color-card-foreground: var(--color-004);
 
-    --theme-color-popover: var(--color-002);
-    --theme-color-popover-foreground: var(--color-004);
+  --theme-color-popover: var(--color-002);
+  --theme-color-popover-foreground: var(--color-004);
 
-    --theme-color-primary: var(--color-010);
-    --theme-color-primary-foreground: var(--color-004);
+  --theme-color-primary: var(--color-010);
+  --theme-color-primary-foreground: var(--color-004);
 
-    --theme-color-secondary: var(--color-011);
-    --theme-color-secondary-foreground: var(--color-004);
+  --theme-color-secondary: var(--color-011);
+  --theme-color-secondary-foreground: var(--color-004);
 
-    --theme-color-muted: var(--color-011);
-    --theme-color-muted-foreground: var(--color-012);
+  --theme-color-muted: var(--color-011);
+  --theme-color-muted-foreground: var(--color-012);
 
-    --theme-color-accent: var(--color-011);
-    --theme-color-accent-foreground: var(--color-004);
+  --theme-color-accent: var(--color-011);
+  --theme-color-accent-foreground: var(--color-004);
 
-    --theme-color-destructive: var(--color-013);
-    --theme-color-destructive-foreground: var(--color-004);
+  --theme-color-destructive: var(--color-013);
+  --theme-color-destructive-foreground: var(--color-004);
 
-    --theme-color-border: var(--color-011);
-    --theme-color-input: var(--color-011);
-    --theme-color-ring: var(--color-010);
-  }
+  --theme-color-border: var(--color-011);
+  --theme-color-input: var(--color-011);
+  --theme-color-ring: var(--color-010);
 }

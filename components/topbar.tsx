@@ -13,8 +13,10 @@ const navLinks = [
 ];
 
 function NavLink({ label, href }: { label: React.ReactNode; href: string }) {
+  const ariaLabel = `Go to ${href.replace(/https?:\/\//, "")}`;
   return (
     <Link
+      aria-label={ariaLabel}
       key={href}
       href={href}
       className="text-sm font-medium underline-offset-4 transition transition-[text-decoration-line] hover:underline"
@@ -27,7 +29,11 @@ function NavLink({ label, href }: { label: React.ReactNode; href: string }) {
 export default function Topbar() {
   return (
     <header className="[background-filter] sticky top-0 flex h-14 w-full items-center px-4 [backdrop-filter:saturate(200%)_blur(3px)] lg:px-6">
-      <Link className="flex items-center justify-center" href="/#hero">
+      <Link
+        aria-label={"Back to Home"}
+        className="flex items-center justify-center"
+        href="/#hero"
+      >
         <CodeIcon className="h-6 w-6" />
         <span className="sr-only">John Carmack</span>
       </Link>

@@ -1,11 +1,50 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import React from "react";
+import Image from "next/image";
+import useSunHidden from "@/hooks/useSunHidden";
+import { cva } from "class-variance-authority";
+
+import { cn } from "@/lib/utils";
+
+const imageVariants = cva(
+  [
+    "-z-10",
+    "absolute",
+    "top-0",
+    "transition-opacity",
+    "transition-transform",
+    "origin-bottom",
+    "duration-300",
+  ],
+  {
+    variants: {
+      variant: {
+        light: [],
+        dark: [],
+      },
+      hidden: {
+        true: ["opacity-0", "scale-50"],
+        false: ["opacity-100"],
+      },
+    },
+    compoundVariants: [
+      {
+        variant: "light",
+        hidden: true,
+        className: ["-rotate-180"],
+      },
+      {
+        variant: "dark",
+        hidden: true,
+        className: ["rotate-180"],
+      },
+    ],
+  },
+);
 
 export default function Hero() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const src =
-    resolvedTheme === "dark" ? "/assets/img/night.png" : "/assets/img/day.png";
+  const { sunHidden } = useSunHidden();
   return (
     <section className="w-full pt-12 md:pt-24 lg:pt-32" id="hero">
       <div className="container px-4 md:px-6">
@@ -21,8 +60,36 @@ export default function Hero() {
               </p>
             </div>
           </div>
-          <div className="basis-1/3 transition">
-            <img src={src} />
+          <div className="relative basis-1/3 overflow-clip transition">
+            <Image
+              className={cn(
+                imageVariants({ variant: "light", hidden: sunHidden }),
+              )}
+              src={"/assets/img/day.webp"}
+              width={1005}
+              height={902}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt={"Day Theme Backdrop"}
+            />
+            <Image
+              className={cn(
+                imageVariants({ variant: "dark", hidden: !sunHidden }),
+              )}
+              src={"/assets/img/night.webp"}
+              width={1005}
+              height={902}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt={"Night Theme Backdrop"}
+            />
+            <Image
+              className={cn("")}
+              src={"/assets/img/john.webp"}
+              width={1005}
+              height={902}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt={"John Carmack"}
+              priority
+            />
           </div>
         </div>
       </div>
