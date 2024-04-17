@@ -1,6 +1,6 @@
 # johncarmack.com
 
-The source code for [https://johncarmack.com](johncarmack.com).
+The source code for [johncarmack.com](https://johncarmack.com).
 
 - NextJS
 - ShadCN
