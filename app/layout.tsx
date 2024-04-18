@@ -18,8 +18,6 @@ export const viewport: Viewport = {
   width: 1,
 };
 
-const url = process.env.VERCEL_URL ?? `http://localhost:${process.env.PORT}`;
-
 export const metadata = {
   title: {
     template: "%s | John Carmack",
@@ -44,7 +42,6 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(url),
   openGraph: {
     title: "John Carmack - Senior Software Engineer",
     description: "Senior Software Engineer with 26 Years of Experience",
