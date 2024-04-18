@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 };
 
 const url = process.env.VERCEL
-  ? `https://${process.env.VERCEL_URL}`
+  ? `https://johncarmack.com`
   : "http://localhost:3000";
 
 const metadataBase = new URL(url);
