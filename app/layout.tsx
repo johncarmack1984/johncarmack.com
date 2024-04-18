@@ -15,9 +15,10 @@ export const dynamic = "force-static";
 export const revalidate = false;
 
 export const viewport: Viewport = {
-  themeColor: "dark",
   width: 1,
 };
+
+const url = process.env.VERCEL_URL ?? `http://localhost:${process.env.PORT}`;
 
 export const metadata = {
   title: {
@@ -43,6 +44,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
+  metadataBase: new URL(url),
   openGraph: {
     title: "John Carmack - Senior Software Engineer",
     description: "Senior Software Engineer with 26 Years of Experience",

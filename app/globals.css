@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --color-*: initial;
+
   --color-background: var(--theme-color-background);
   --color-foreground: var(--theme-color-foreground);
 
@@ -57,7 +59,6 @@
 
 * {
   @apply border-border;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -82,7 +83,6 @@ body {
   }
 }
 
-/* https://coolors.co/ffffff-002f31-62752b-3d82bf-03343b-edaa74-a4d4fa-889942-fbe7c9-01424c */
 :root {
   --color-001: hsl(0, 0%, 100%);
   --color-002: hsl(180, 100%, 3%);
@@ -125,6 +125,8 @@ body {
   --theme-color-border: var(--color-009);
   --theme-color-input: var(--color-009);
   --theme-color-ring: var(--color-003);
+
+  scroll-behavior: smooth;
 }
 
 [data-theme="dark"] {

@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import john from "@/public/assets/img/john.webp";
 
 const HeroImageBackground = dynamic(() => import("./hero-image-background"), {
   ssr: false,
@@ -10,9 +11,7 @@ function HeroImage() {
     <div className="relative basis-1/3 overflow-clip transition">
       <HeroImageBackground />
       <Image
-        src={"/assets/img/john.webp"}
-        width={1005}
-        height={902}
+        src={john}
         sizes="(max-width: 768px) 100vw, 33vw"
         alt={"John Carmack"}
         priority

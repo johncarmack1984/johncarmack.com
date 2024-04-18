@@ -1,6 +1,9 @@
 import { Fragment, Key } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import deepFreeze from "@/public/assets/img/deep-freeze.webp";
+import lux from "@/public/assets/img/lux.webp";
+import tohSkillBuilder from "@/public/assets/img/toh-skill-builder.webp";
 import { GlobeIcon } from "@radix-ui/react-icons";
 
 import {
@@ -25,7 +28,7 @@ const projects = [
   {
     title: "Lux",
     description: "A light controller for USB DMX devices.",
-    image: "/assets/img/lux.webp",
+    image: lux,
     href: "https://github.com/johncarmack1984/lux",
     platforms: [AppleIcon],
     skills: [Rust, ReactIcon],
@@ -33,7 +36,7 @@ const projects = [
   {
     title: "Skill Builder",
     description: "Character skill builder for Fate-based TTRPGs.",
-    image: "/assets/img/toh-skill-builder.webp",
+    image: tohSkillBuilder,
     href: "https://toh-skill-builder.netlify.app/",
     skills: [JavaScriptIcon, VueIcon],
     platforms: [WebIcon],
@@ -41,7 +44,7 @@ const projects = [
   {
     title: "Deep Freeze",
     description: "Migrate from DropBox Business to S3 Deep Archive.",
-    image: "/assets/img/deep-freeze.webp",
+    image: deepFreeze,
     href: "https://github.com/johncarmack1984/deep-freeze",
     skills: [Rust, TerraformIcon],
     platforms: [CommandPromptIcon],
@@ -74,7 +77,7 @@ function Project({
 }: {
   title: string;
   description: string;
-  image: string;
+  image: StaticImageData;
   href: string;
   platforms: any[];
   skills: ProjectIcon[];
@@ -86,8 +89,7 @@ function Project({
           <Image
             alt={title}
             className="aspect-video h-32 w-full rounded-md object-cover transition-transform duration-500 hover:scale-105"
-            height={720}
-            width={1080}
+            sizes="(max-width: 768px) 100vw, 33vw"
             src={image}
             style={{
               objectFit: "cover",
@@ -102,7 +104,7 @@ function Project({
 
       <CardFooter className="flex gap-2">
         <CardDescription className="flex items-center gap-[6px]">
-          built for {platforms.map(Platform)}
+          {platforms.map(Platform)}
         </CardDescription>
       </CardFooter>
     </Card>

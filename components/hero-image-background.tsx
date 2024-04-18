@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import useSunHidden from "@/hooks/useSunHidden";
+import day from "@/public/assets/img/day.webp";
+import night from "@/public/assets/img/night.webp";
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
@@ -50,21 +52,17 @@ function HeroImageBackground() {
         className={cn(
           backgroundImageVariants({ variant: "light", hidden: sunHidden }),
         )}
-        src={"/assets/img/day.webp"}
-        width={1005}
-        height={902}
+        src={day}
         sizes="(max-width: 768px) 100vw, 33vw"
-        alt={"Day Theme Backdrop"}
+        alt="Day Theme Backdrop"
       />
       <Image
         className={cn(
           backgroundImageVariants({ variant: "dark", hidden: !sunHidden }),
         )}
-        src={"/assets/img/night.webp"}
-        width={1005}
-        height={902}
+        src={night}
         sizes="(max-width: 768px) 100vw, 33vw"
-        alt={"Night Theme Backdrop"}
+        alt="Night Theme Backdrop"
       />
     </>
   );
