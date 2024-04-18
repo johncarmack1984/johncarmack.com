@@ -18,7 +18,14 @@ export const viewport: Viewport = {
   width: 1,
 };
 
+const url = process.env.VERCEL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
+const metadataBase = new URL(url);
+
 export const metadata = {
+  metadataBase,
   title: {
     template: "%s | John Carmack",
     default: "John Carmack",
