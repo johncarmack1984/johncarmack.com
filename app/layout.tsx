@@ -1,23 +1,23 @@
 import "./globals.css";
 
 import type { Viewport } from "next";
-import {
-  Inter as FontSans,
-  Ibarra_Real_Nova as FontSerif,
-} from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
-import Topbar from "../components/topbar";
-
-export const viewport: Viewport = {
-  themeColor: "light",
-};
+import Topbar from "@/components/topbar";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
-const fontSerif = FontSerif({ subsets: ["latin"], variable: "--font-serif" });
+
+export const dynamic = "force-static";
+export const revalidate = false;
+
+export const viewport: Viewport = {
+  themeColor: "dark",
+  width: 1,
+};
 
 export const metadata = {
   title: {
@@ -27,7 +27,14 @@ export const metadata = {
   description: "Senior Software Engineer with 26 Years of Experience",
   generator: "Next.js",
   applicationName: "johncarmack.com",
-  keywords: ["John Carmack", "Software Engineer", "Senior Software Engineer"],
+  keywords: [
+    "John Carmack",
+    "Software Engineer",
+    "Senior Software Engineer",
+    "rust",
+    "javscript",
+    "react",
+  ],
   authors: [{ name: "John Carmack" }],
   creator: "John Carmack",
   publisher: "John Carmack",
@@ -41,14 +48,7 @@ export const metadata = {
     description: "Senior Software Engineer with 26 Years of Experience",
     url: "https://johncarmack.com",
     siteName: "John Carmack",
-    images: [
-      {
-        url: "https://johncarmack.com/assets/img/day.png",
-        width: 902,
-        height: 902,
-        alt: "John Carmack - Senior Software Engineer",
-      },
-    ],
+    images: "/opengraph-image.png",
     locale: "en_US",
     type: "website",
   },
@@ -60,6 +60,8 @@ export const metadata = {
       index: true,
       follow: true,
       noimageindex: false,
+      "max-image-preview": "large",
+      "max-snippet": "275",
     },
   },
 };
@@ -75,7 +77,6 @@ export default function RootLayout({
         className={cn(
           `mx-auto flex min-h-screen flex-col items-start justify-start antialiased`,
           fontSans.variable,
-          fontSerif.variable,
         )}
       >
         <ThemeProvider defaultTheme="system" enableSystem>
