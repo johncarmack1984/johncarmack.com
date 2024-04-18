@@ -68,7 +68,7 @@ export default function Hero() {
               src={"/assets/img/day.webp"}
               width={1005}
               height={902}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 33vw"
               alt={"Day Theme Backdrop"}
             />
             <Image
@@ -78,7 +78,7 @@ export default function Hero() {
               src={"/assets/img/night.webp"}
               width={1005}
               height={902}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 33vw"
               alt={"Night Theme Backdrop"}
             />
             <Image
@@ -86,7 +86,7 @@ export default function Hero() {
               src={"/assets/img/john.webp"}
               width={1005}
               height={902}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 33vw"
               alt={"John Carmack"}
               priority
             />

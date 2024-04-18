@@ -1,0 +1,16 @@
+{
+  "ignores": [
+    "sharp",
+    "@tailwindcss/postcss",
+    "autoprefixer",
+    "@ianvs/prettier-plugin-sort-imports",
+    "@types/node",
+    "eslint",
+    "eslint-config-next",
+    "postcss",
+    "prettier",
+    "prettier-plugin-tailwindcss",
+    "tailwindcss",
+    "typescript"
+  ]
+}
