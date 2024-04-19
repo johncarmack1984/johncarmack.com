@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section className="w-full pt-12 md:pt-24 lg:pt-32" id="hero">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col-reverse items-end gap-8 md:flex-row md:gap-0">
+        <div className="flex flex-col-reverse items-end gap-8 md:flex-row md:gap-1">
           <HeroText />
           <HeroImage />
         </div>

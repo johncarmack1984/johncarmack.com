@@ -115,12 +115,8 @@
     @apply border-border;
   }
 
-  :root {
-    @apply transition-all;
-  }
-
   body {
-    @apply text-foreground bg-background transition-all;
+    @apply text-foreground bg-background;
   }
 
   html {
