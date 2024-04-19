@@ -6,33 +6,31 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { cn } from "@/lib/utils";
+import SiteNav from "@/components/site-nav";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
-import Topbar from "@/components/topbar";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const dynamic = "force-static";
-export const revalidate = false;
-
-export const viewport: Viewport = {
-  width: 1,
-};
 
 const url = process.env.VERCEL
   ? `https://johncarmack.com`
   : "http://localhost:3000";
 
-const metadataBase = new URL(url);
+const siteConfig = {
+  name: "John Carmack - Senior Software Engineer",
+  description: "26 years of expertise building exceptional user experiences.",
+  url,
+};
 
 export const metadata = {
-  metadataBase,
   title: {
-    template: "%s | John Carmack",
-    default: "John Carmack",
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.name,
   },
-  description: "Senior Software Engineer with 26 Years of Experience",
-  generator: "Next.js",
-  applicationName: "johncarmack.com",
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
   keywords: [
     "John Carmack",
     "Software Engineer",
@@ -43,20 +41,14 @@ export const metadata = {
   ],
   authors: [{ name: "John Carmack" }],
   creator: "John Carmack",
-  publisher: "John Carmack",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   openGraph: {
-    title: "John Carmack - Senior Software Engineer",
-    description: "Senior Software Engineer with 26 Years of Experience",
-    url: "https://johncarmack.com",
-    siteName: "John Carmack",
-    images: "/opengraph-image.png",
-    locale: "en_US",
     type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: "/opengraph-image.png",
   },
   robots: {
     index: true,
@@ -72,6 +64,14 @@ export const metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "light" },
+    { media: "(prefers-color-scheme: dark)", color: "dark" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -81,14 +81,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          `mx-auto flex min-h-screen flex-col items-start justify-start antialiased`,
+          `bg-background min-h-screen font-sans antialiased`,
           fontSans.variable,
         )}
       >
         <ThemeProvider defaultTheme="system" enableSystem>
-          <Topbar />
-          {children}
+          <div className="bg-background relative mx-auto flex min-h-screen flex-col items-start justify-start">
+            <SiteNav />
+            {children}
+          </div>
         </ThemeProvider>
+        <TailwindIndicator />
         <SpeedInsights />
         <Analytics />
       </body>
