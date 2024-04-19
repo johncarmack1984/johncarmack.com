@@ -80,13 +80,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          `bg-background min-h-screen font-sans antialiased`,
-          fontSans.variable,
-        )}
+        className={cn(`min-h-screen font-sans antialiased`, fontSans.variable)}
       >
         <ThemeProvider defaultTheme="system" enableSystem>
-          <div className="bg-background relative mx-auto flex min-h-screen flex-col items-start justify-start">
+          <div className="bg-background text-foreground relative mx-auto flex min-h-screen flex-col items-start justify-start transition-colors">
             <SiteNav />
             {children}
           </div>

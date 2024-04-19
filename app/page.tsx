@@ -6,7 +6,7 @@ import Skills from "@/components/skills/skills";
 export default function Home() {
   return (
     <div className="mx-auto flex min-h-screen flex-col">
-      <main className="flex-1 overflow-y-scroll scroll-smooth will-change-scroll">
+      <main className="flex-1 overflow-y-scroll scroll-smooth">
         <Hero />
         <Skills />
         <Projects />

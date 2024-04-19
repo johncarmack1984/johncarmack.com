@@ -14,24 +14,27 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const iconVariants = cva(["absolute", "size-[1.2rem]", "transition-all"], {
-  variants: {
-    hidden: {
-      true: ["opacity-0", "-rotate-180"],
-      false: ["opacity-100", "rotate-0"],
+const iconVariants = cva(
+  ["absolute", "size-[1.2rem]", "transition-transform"],
+  {
+    variants: {
+      hidden: {
+        true: ["opacity-0", "-rotate-180"],
+        false: ["opacity-100", "rotate-0"],
+      },
+    },
+    defaultVariants: {
+      hidden: true,
     },
   },
-  defaultVariants: {
-    hidden: true,
-  },
-});
+);
 
 export default function ModeToggle() {
   const { sunHidden, setTheme } = useSunHidden();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="" variant="outline" size="icon">
+        <Button className="bg-background/20" variant="outline" size="icon">
           <SunIcon className={cn(iconVariants({ hidden: sunHidden }))} />
           <MoonIcon className={cn(iconVariants({ hidden: !sunHidden }))} />
           <span className="sr-only">Toggle theme</span>

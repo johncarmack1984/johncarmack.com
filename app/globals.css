@@ -118,7 +118,6 @@
     @apply scroll-smooth;
   }
   body {
-    @apply text-foreground bg-background;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }

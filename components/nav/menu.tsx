@@ -1,12 +1,12 @@
 import { cva, VariantProps } from "class-variance-authority";
 
 import NavLink from "./link";
-import navLinks from "./nav-links";
+import navLinks from "./links";
 
 const navMenuVariants = cva("ml-auto flex items-center", {
   variants: {
     variant: {
-      top: "hidden md:flex mr-4 items-center gap-0",
+      top: "hidden md:flex mr-4 items-center gap-1",
       left: "flex-col gap-2 justify-start items-start",
     },
   },
