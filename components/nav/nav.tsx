@@ -11,7 +11,7 @@ function HomeLink() {
     <Link
       aria-label="Back to Home"
       href={navLinks[0].href}
-      className="hidden items-center mix-blend-difference md:block"
+      className="hidden items-center md:block"
     >
       <CodeIcon className="h-6 w-6" />
       <h1 className="sr-only">John Carmack</h1>
