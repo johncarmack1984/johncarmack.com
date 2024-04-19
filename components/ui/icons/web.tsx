@@ -1,9 +1,9 @@
 import { GlobeIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
-import type { ProjectIcon } from "./types";
+import type { SkillIcon } from "@/components/skills/skill";
 
-const WebIcon: ProjectIcon = ({ className, ...props }) => {
+const WebIcon: SkillIcon = ({ className, ...props }) => {
   return <GlobeIcon xlinkTitle="Web" className={cn(className)} {...props} />;
 };
 

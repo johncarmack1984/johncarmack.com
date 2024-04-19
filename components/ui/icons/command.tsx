@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import type { ProjectIcon } from "./types";
+import type { SkillIcon } from "@/components/skills/skill";
 
-const CommandPromptIcon: ProjectIcon = ({ className, ...props }) => {
+const CommandPromptIcon: SkillIcon = ({ className, ...props }) => {
   return (
     <svg
       width="800px"

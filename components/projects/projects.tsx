@@ -4,12 +4,12 @@ import tohSkillBuilder from "@/public/assets/img/toh-skill-builder.webp";
 
 import AppleIcon from "@/components/ui/icons/apple";
 import CommandPromptIcon from "@/components/ui/icons/command";
-import JavaScriptIcon from "../ui/icons/javascript";
-import ReactIcon from "../ui/icons/react";
-import Rust from "../ui/icons/rust";
-import TerraformIcon from "../ui/icons/terraform";
-import VueIcon from "../ui/icons/vue";
-import WebIcon from "../ui/icons/web";
+import JavaScriptIcon from "@/components/ui/icons/javascript";
+import ReactIcon from "@/components/ui/icons/react";
+import Rust from "@/components/ui/icons/rust";
+import TerraformIcon from "@/components/ui/icons/terraform";
+import VueIcon from "@/components/ui/icons/vue";
+import WebIcon from "@/components/ui/icons/web";
 import Project from "./project";
 
 const projects = [

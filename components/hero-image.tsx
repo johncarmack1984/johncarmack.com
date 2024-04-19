@@ -13,7 +13,7 @@ function HeroImage() {
       <Image
         className="relative z-20"
         src={john}
-        sizes="(max-width: 768px) 100vw, 25vw"
+        sizes="(max-width: 768px) 95vw, 25vw"
         alt={"John Carmack"}
         priority
       />

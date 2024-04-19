@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, domAnimation, LazyMotion } from "framer-motion";
 
 import {
   Sheet,
@@ -22,17 +22,19 @@ function MobileNav() {
         <HamburgerMenuIcon />
         <span className="sr-only">Open Navigation</span>
       </SheetTrigger>
-      <AnimatePresence>
-        {open && (
-          <SheetContent side="left">
-            <SheetHeader className="mb-4 items-start">
-              <SheetTitle>Navigation</SheetTitle>
-              <SheetDescription>johncarmack.com</SheetDescription>
-            </SheetHeader>
-            <NavMenu variant="left" />
-          </SheetContent>
-        )}
-      </AnimatePresence>
+      <LazyMotion features={domAnimation} strict>
+        <AnimatePresence>
+          {open && (
+            <SheetContent side="left">
+              <SheetHeader className="mb-4 items-start">
+                <SheetTitle>Navigation</SheetTitle>
+                <SheetDescription>johncarmack.com</SheetDescription>
+              </SheetHeader>
+              <NavMenu variant="left" />
+            </SheetContent>
+          )}
+        </AnimatePresence>
+      </LazyMotion>
     </Sheet>
   );
 }

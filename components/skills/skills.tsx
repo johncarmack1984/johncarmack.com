@@ -1,11 +1,10 @@
-import { Card } from "./ui/card";
-import JavaScriptIcon from "./ui/icons/javascript";
-import NodeJsIcon from "./ui/icons/node";
-import PostgreSqlIcon from "./ui/icons/postgresql";
-import PythonIcon from "./ui/icons/python";
-import ReactIcon from "./ui/icons/react";
-import RustIcon from "./ui/icons/rust";
-import { ProjectIcon } from "./ui/icons/types";
+import JavaScriptIcon from "@/components/ui/icons/javascript";
+import NodeJsIcon from "@/components/ui/icons/node";
+import PostgreSqlIcon from "@/components/ui/icons/postgresql";
+import PythonIcon from "@/components/ui/icons/python";
+import ReactIcon from "@/components/ui/icons/react";
+import RustIcon from "@/components/ui/icons/rust";
+import Skill from "./skill";
 
 const skills = [
   { Icon: JavaScriptIcon, name: "JavaScript" },
@@ -15,15 +14,6 @@ const skills = [
   { Icon: PostgreSqlIcon, name: "PostgreSQL" },
   { Icon: RustIcon, name: "Rust" },
 ];
-
-function Skill({ Icon, name }: { Icon: ProjectIcon; name: string }) {
-  return (
-    <Card key={name} className="flex items-center gap-4 rounded-md p-4">
-      <Icon className="inline size-12 fill-current" />
-      <h3 className="font-semibold">{name}</h3>
-    </Card>
-  );
-}
 
 export default function Skills() {
   return (

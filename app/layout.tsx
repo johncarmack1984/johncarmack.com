@@ -91,6 +91,7 @@ export default function RootLayout({
             {children}
           </div>
         </ThemeProvider>
+
         <TailwindIndicator />
         <SpeedInsights />
         <Analytics />

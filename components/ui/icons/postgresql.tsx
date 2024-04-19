@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import type { ProjectIcon } from "./types";
+import type { SkillIcon } from "@/components/skills/skill";
 
-const PostgreSqlIcon: ProjectIcon = ({ className, ...props }) => {
+const PostgreSqlIcon: SkillIcon = ({ className, ...props }) => {
   return (
     <svg viewBox="0 0 128 128" className={cn(className)} {...props}>
       <title>PostgreSQL</title>

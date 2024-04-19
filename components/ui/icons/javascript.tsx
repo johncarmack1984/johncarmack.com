@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import type { ProjectIcon } from "./types";
+import type { SkillIcon } from "@/components/skills/skill";
 
-const JavaScriptIcon: ProjectIcon = ({ className, ...props }) => {
+const JavaScriptIcon: SkillIcon = ({ className, ...props }) => {
   return (
     <svg
       xlinkTitle="JavaScript"

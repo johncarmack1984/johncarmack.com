@@ -4,7 +4,7 @@ import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLMotionProps, motion } from "framer-motion";
+import { HTMLMotionProps, m } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ const SheetOverlay = React.forwardRef<
     ref={ref}
     asChild
   >
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -41,7 +41,7 @@ const sheetVariants = cva("fixed z-50 gap-4 bg-background p-6 shadow-lg", {
     side: {
       top: "inset-x-0 top-0 border-b",
       bottom: "inset-x-0 bottom-0 border-t ",
-      left: "inset-y-0 left-0 h-full w-1/3 border-r sm:max-w-sm",
+      left: "inset-y-0 left-0 h-full w-fit border-r sm:max-w-sm",
       right: "inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
     },
   },
@@ -96,16 +96,13 @@ const SheetContent = React.forwardRef<
       {...props}
       asChild
     >
-      <motion.div
-        {...sideCoords[side ?? "right"]}
-        transition={transitionSetting}
-      >
+      <m.div {...sideCoords[side ?? "right"]} transition={transitionSetting}>
         {children}
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none">
           <Cross2Icon className="h-4 w-4" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
-      </motion.div>
+      </m.div>
     </SheetPrimitive.Content>
   </SheetPortal>
 ));
