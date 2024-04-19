@@ -9,8 +9,8 @@ function HeroText() {
         Hi. I'm John Carmack.
       </h1>
       <p className="text-muted-foreground text-lg">
-        I'm a software engineer with 26 years of experience building exceptional
-        digital experiences.
+        I'm a software engineer with 26 years of practiced expertise in building
+        exceptional digital experiences.
       </p>
     </div>
   );
