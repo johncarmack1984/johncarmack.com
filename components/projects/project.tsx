@@ -44,7 +44,7 @@ function Project({
           <Image
             alt={title}
             className="aspect-video h-32 w-full rounded-md object-cover transition-transform duration-500 hover:scale-105"
-            sizes="(max-width: 639px) 80vw, 25vw"
+            sizes="(max-width: 639px) 60vw, (max-width: 767px) 40vw, 25vw"
             src={image}
             style={{
               objectFit: "cover",

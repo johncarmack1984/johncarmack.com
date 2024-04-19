@@ -53,7 +53,7 @@ function HeroImageBackground() {
           backgroundImageVariants({ variant: "light", hidden: sunHidden }),
         )}
         src={day}
-        sizes="(max-width: 768px) 100vw, 25vw"
+        sizes="(max-width: 768px) 95vw, 25vw"
         alt="Day Theme Backdrop"
       />
       <Image
@@ -61,7 +61,7 @@ function HeroImageBackground() {
           backgroundImageVariants({ variant: "dark", hidden: !sunHidden }),
         )}
         src={night}
-        sizes="(max-width: 768px) 100vw, 25vw"
+        sizes="(max-width: 768px) 95vw, 25vw"
         alt="Night Theme Backdrop"
       />
     </>

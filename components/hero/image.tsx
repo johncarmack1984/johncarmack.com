@@ -1,10 +1,7 @@
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import john from "@/public/assets/img/john.webp";
 
-const HeroImageBackground = dynamic(() => import("./hero-image-background"), {
-  ssr: false,
-});
+import HeroImageBackground from "@/components/hero/image-background";
 
 function HeroImage() {
   return (
