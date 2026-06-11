@@ -20,7 +20,8 @@ const url = process.env.VERCEL
 
 const siteConfig = {
   name: "John Carmack - Senior Software Engineer",
-  description: "26 years of expertise building exceptional user experiences.",
+  description:
+    "Senior full-stack engineer -- Rust and TypeScript, from GPU and geospatial front ends to cloud infrastructure.",
   url,
 };
 
@@ -35,9 +36,16 @@ export const metadata = {
     "John Carmack",
     "Software Engineer",
     "Senior Software Engineer",
-    "rust",
-    "javscript",
-    "react",
+    "Rust",
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Tauri",
+    "MapLibre",
+    "deck.gl",
+    "geospatial",
+    "AWS",
+    "full-stack",
   ],
   authors: [{ name: "John Carmack" }],
   creator: "John Carmack",

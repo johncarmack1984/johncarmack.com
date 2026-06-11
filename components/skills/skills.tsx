@@ -1,18 +1,38 @@
+import AwsIcon from "@/components/ui/icons/aws";
+import D3Icon from "@/components/ui/icons/d3";
+import GitHubActionsIcon from "@/components/ui/icons/github-actions";
 import JavaScriptIcon from "@/components/ui/icons/javascript";
+import KubernetesIcon from "@/components/ui/icons/kubernetes";
+import MapLibreIcon from "@/components/ui/icons/maplibre";
+import NextJsIcon from "@/components/ui/icons/nextjs";
 import NodeJsIcon from "@/components/ui/icons/node";
 import PostgreSqlIcon from "@/components/ui/icons/postgresql";
 import PythonIcon from "@/components/ui/icons/python";
 import ReactIcon from "@/components/ui/icons/react";
 import RustIcon from "@/components/ui/icons/rust";
+import SnowflakeIcon from "@/components/ui/icons/snowflake";
+import TauriIcon from "@/components/ui/icons/tauri";
+import TerraformIcon from "@/components/ui/icons/terraform";
+import TypeScriptIcon from "@/components/ui/icons/typescript";
 import Skill from "./skill";
 
 const skills = [
+  { Icon: RustIcon, name: "Rust" },
+  { Icon: TypeScriptIcon, name: "TypeScript" },
   { Icon: JavaScriptIcon, name: "JavaScript" },
   { Icon: ReactIcon, name: "React" },
+  { Icon: NextJsIcon, name: "Next.js" },
   { Icon: NodeJsIcon, name: "Node.js" },
+  { Icon: TauriIcon, name: "Tauri" },
+  { Icon: MapLibreIcon, name: "MapLibre" },
+  { Icon: D3Icon, name: "D3.js" },
   { Icon: PythonIcon, name: "Python" },
   { Icon: PostgreSqlIcon, name: "PostgreSQL" },
-  { Icon: RustIcon, name: "Rust" },
+  { Icon: SnowflakeIcon, name: "Snowflake" },
+  { Icon: AwsIcon, name: "AWS" },
+  { Icon: TerraformIcon, name: "Terraform" },
+  { Icon: KubernetesIcon, name: "Kubernetes" },
+  { Icon: GitHubActionsIcon, name: "GitHub Actions" },
 ];
 
 export default function Skills() {

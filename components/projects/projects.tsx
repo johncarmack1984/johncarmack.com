@@ -1,15 +1,11 @@
 import deepFreeze from "@/public/assets/img/deep-freeze.webp";
 import lux from "@/public/assets/img/lux.webp";
-import tohSkillBuilder from "@/public/assets/img/toh-skill-builder.webp";
 
 import AppleIcon from "@/components/ui/icons/apple";
 import CommandPromptIcon from "@/components/ui/icons/command";
-import JavaScriptIcon from "@/components/ui/icons/javascript";
 import ReactIcon from "@/components/ui/icons/react";
 import Rust from "@/components/ui/icons/rust";
 import TerraformIcon from "@/components/ui/icons/terraform";
-import VueIcon from "@/components/ui/icons/vue";
-import WebIcon from "@/components/ui/icons/web";
 import Project from "./project";
 
 const projects = [
@@ -20,14 +16,6 @@ const projects = [
     href: "https://github.com/johncarmack1984/lux",
     platforms: [AppleIcon],
     skills: [Rust, ReactIcon],
-  },
-  {
-    title: "Skill Builder",
-    description: "Character skill builder for Fate-based TTRPGs.",
-    image: tohSkillBuilder,
-    href: "https://toh-skill-builder.netlify.app/",
-    skills: [JavaScriptIcon, VueIcon],
-    platforms: [WebIcon],
   },
   {
     title: "Deep Freeze",
