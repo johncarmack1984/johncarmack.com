@@ -1,0 +1,43 @@
+import deepFreeze from "@/assets/img/deep-freeze.webp";
+import lux from "@/assets/img/lux.webp";
+
+import AppleIcon from "@/components/ui/icons/apple";
+import CommandPromptIcon from "@/components/ui/icons/command";
+import ReactIcon from "@/components/ui/icons/react";
+import Rust from "@/components/ui/icons/rust";
+import TerraformIcon from "@/components/ui/icons/terraform";
+import Project from "./project";
+
+const projects = [
+  {
+    title: "Lux",
+    description: "A light controller for USB DMX devices.",
+    image: lux,
+    href: "https://github.com/johncarmack1984/lux",
+    platforms: [AppleIcon],
+    skills: [Rust, ReactIcon],
+  },
+  {
+    title: "Deep Freeze",
+    description: "Migrate from DropBox Business to S3 Deep Archive.",
+    image: deepFreeze,
+    href: "https://github.com/johncarmack1984/deep-freeze",
+    skills: [Rust, TerraformIcon],
+    platforms: [CommandPromptIcon],
+  },
+];
+
+export default function Projects() {
+  return (
+    <section className="w-full py-12 md:py-24 lg:py-32" id="projects">
+      <div className="container px-4 md:px-6">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+          Projects
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map(Project)}
+        </div>
+      </div>
+    </section>
+  );
+}
