@@ -1,0 +1,15 @@
+{
+  "name": "John Carmack",
+  "short_name": "John Carmack",
+  "description": "Senior Software Engineer with 26 Years of Experience",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ]
+}

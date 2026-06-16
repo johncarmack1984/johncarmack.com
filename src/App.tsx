@@ -1,0 +1,26 @@
+import SiteNav from "@/components/nav/nav";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
+import Hero from "@/components/hero/hero";
+import Skills from "@/components/skills/skills";
+import Projects from "@/components/projects/projects";
+import Contact from "@/components/contact";
+
+export default function App() {
+  return (
+    <>
+      <div className="bg-background text-foreground relative mx-auto flex min-h-screen flex-col items-start justify-start transition-colors">
+        <SiteNav />
+        <div className="mx-auto flex min-h-screen flex-col">
+          <main className="flex-1 overflow-y-scroll scroll-smooth">
+            <Hero />
+            <Skills />
+            <Projects />
+            <Contact />
+          </main>
+        </div>
+      </div>
+
+      <TailwindIndicator />
+    </>
+  );
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>John Carmack - Senior Software Engineer</title>
+    <meta
+      name="description"
+      content="Senior full-stack engineer -- Rust and TypeScript, from GPU and geospatial front ends to cloud infrastructure."
+    />
+    <meta
+      name="keywords"
+      content="John Carmack, Software Engineer, Senior Software Engineer, Rust, TypeScript, JavaScript, React, Tauri, MapLibre, deck.gl, geospatial, AWS, full-stack"
+    />
+    <meta name="author" content="John Carmack" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:275"
+    />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#000f0f"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://johncarmack.com" />
+    <meta property="og:site_name" content="John Carmack - Senior Software Engineer" />
+    <meta property="og:title" content="John Carmack - Senior Software Engineer" />
+    <meta
+      property="og:description"
+      content="Senior full-stack engineer -- Rust and TypeScript, from GPU and geospatial front ends to cloud infrastructure."
+    />
+    <meta property="og:image" content="/opengraph-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="John Carmack - Senior Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Senior full-stack engineer -- Rust and TypeScript, from GPU and geospatial front ends to cloud infrastructure."
+    />
+    <meta name="twitter:image" content="/opengraph-image.png" />
+
+    <!-- Inter, matching the previous next/font setup -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Set the theme before first paint to avoid a flash (mirrors next-themes). -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark =
+            stored === "dark" ||
+            ((!stored || stored === "system") &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
