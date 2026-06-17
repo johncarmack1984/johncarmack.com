@@ -1,4 +1,4 @@
-import { Fragment, type Key } from "react";
+import { type Key } from "react";
 
 import { SkillIcon } from "@/components/skills/skill";
 import {
@@ -10,11 +10,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-function ProjectSkill(Icon: SkillIcon, key: Key) {
+export type Tool = { Icon: SkillIcon; name: string };
+
+function ProjectSkill({ Icon, name }: Tool, key: Key) {
   return (
-    <Fragment key={key}>
-      <Icon className="size-6 fill-current" />
-    </Fragment>
+    <span key={key} className="inline-flex items-center gap-1.5 text-xs">
+      <Icon className="size-4 fill-current" />
+      <span className="text-muted-foreground">{name}</span>
+    </span>
   );
 }
 
@@ -23,8 +26,8 @@ type ProjectProps = {
   description: string;
   image: string;
   href: string;
-  platforms: SkillIcon[];
-  skills: SkillIcon[];
+  platforms: Tool[];
+  skills: Tool[];
 };
 
 function Project({
@@ -50,12 +53,14 @@ function Project({
           />
         </a>
         <CardTitle className="mt-4 text-base font-semibold">{title}</CardTitle>
-        <div className="flex flex-wrap gap-2">{skills.map(ProjectSkill)}</div>
+        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5">
+          {skills.map(ProjectSkill)}
+        </div>
       </CardHeader>
       <CardContent className="text-sm">{description}</CardContent>
 
       <CardFooter className="flex gap-2">
-        <CardDescription className="flex items-center gap-[6px]">
+        <CardDescription className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
           {platforms.map(ProjectSkill)}
         </CardDescription>
       </CardFooter>
