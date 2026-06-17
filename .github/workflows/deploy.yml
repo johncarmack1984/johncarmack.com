@@ -61,10 +61,14 @@ jobs:
             --cache-control "no-cache"
 
       - name: Invalidate CloudFront
+        # Only the SPA entry needs busting: hashed assets are immutable and
+        # content-addressed (a new build ships new filenames, so stale entries
+        # just go unreferenced), and the other root files are served no-cache so
+        # CloudFront revalidates them on its own.
         run: |
           aws cloudfront create-invalidation \
             --distribution-id "${{ vars.DISTRIBUTION_ID }}" \
-            --paths "/*"
+            --paths "/" "/index.html"
 
       # Record the publish as a GitHub Deployment to `production` so the repo's
       # Deployments view tracks what's live. Done via the API rather than a
