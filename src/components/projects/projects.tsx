@@ -8,9 +8,12 @@ import typedGeojson from "@/assets/img/typed-geojson.webp";
 
 import AppleIcon from "@/components/ui/icons/apple";
 import AwsIcon from "@/components/ui/icons/aws";
+import AxumIcon from "@/components/ui/icons/axum";
+import CdkIcon from "@/components/ui/icons/cdk";
 import CodeIcon from "@/components/ui/icons/code";
 import CommandPromptIcon from "@/components/ui/icons/command";
 import DeckGlIcon from "@/components/ui/icons/deckgl";
+import LumaGlIcon from "@/components/ui/icons/lumagl";
 import MapLibreIcon from "@/components/ui/icons/maplibre";
 import NextJsIcon from "@/components/ui/icons/nextjs";
 import ReactIcon from "@/components/ui/icons/react";
@@ -40,7 +43,9 @@ const projects = [
       DeckGlIcon,
       MapLibreIcon,
       WebGlIcon,
+      LumaGlIcon,
       AwsIcon,
+      CdkIcon,
     ],
   },
   {
@@ -49,7 +54,7 @@ const projects = [
     image: deckWindLayer,
     href: "https://github.com/johncarmack1984/deck-wind-layer",
     platforms: [WebIcon],
-    skills: [TypeScriptIcon, DeckGlIcon, WebGlIcon, ViteIcon],
+    skills: [TypeScriptIcon, DeckGlIcon, WebGlIcon, LumaGlIcon, ViteIcon],
   },
   {
     title: "Manifest",
@@ -57,7 +62,16 @@ const projects = [
     image: manifest,
     href: "https://github.com/johncarmack1984/manifest",
     platforms: [WebIcon],
-    skills: [Rust, TypeScriptIcon, ReactIcon, TailwindIcon, ViteIcon, AwsIcon],
+    skills: [
+      Rust,
+      AxumIcon,
+      TypeScriptIcon,
+      ReactIcon,
+      TailwindIcon,
+      ViteIcon,
+      AwsIcon,
+      CdkIcon,
+    ],
   },
   {
     title: "typed-geojson",
@@ -81,7 +95,16 @@ const projects = [
     image: lux,
     href: "https://github.com/johncarmack1984/lux",
     platforms: [AppleIcon],
-    skills: [Rust, TypeScriptIcon, ReactIcon, NextJsIcon, TailwindIcon, TauriIcon],
+    skills: [
+      Rust,
+      AxumIcon,
+      TypeScriptIcon,
+      ReactIcon,
+      NextJsIcon,
+      TailwindIcon,
+      TauriIcon,
+      TerraformIcon,
+    ],
   },
   {
     title: "Deep Freeze",

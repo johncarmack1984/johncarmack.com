@@ -50,7 +50,7 @@ function Project({
           />
         </a>
         <CardTitle className="mt-4 text-base font-semibold">{title}</CardTitle>
-        <div className="flex gap-2">{skills.map(ProjectSkill)}</div>
+        <div className="flex flex-wrap gap-2">{skills.map(ProjectSkill)}</div>
       </CardHeader>
       <CardContent className="text-sm">{description}</CardContent>
 
