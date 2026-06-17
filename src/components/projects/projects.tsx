@@ -25,7 +25,34 @@ import TypeScriptIcon from "@/components/ui/icons/typescript";
 import ViteIcon from "@/components/ui/icons/vite";
 import WebGlIcon from "@/components/ui/icons/webgl";
 import WebIcon from "@/components/ui/icons/web";
-import Project from "./project";
+import Project, { type Tool } from "./project";
+
+// Each tool is an icon + label, defined once and reused across the cards.
+const T = {
+  rust: { Icon: Rust, name: "Rust" },
+  ts: { Icon: TypeScriptIcon, name: "TypeScript" },
+  react: { Icon: ReactIcon, name: "React" },
+  next: { Icon: NextJsIcon, name: "Next.js" },
+  tailwind: { Icon: TailwindIcon, name: "Tailwind" },
+  vite: { Icon: ViteIcon, name: "Vite" },
+  deckgl: { Icon: DeckGlIcon, name: "deck.gl" },
+  maplibre: { Icon: MapLibreIcon, name: "MapLibre" },
+  webgl: { Icon: WebGlIcon, name: "WebGL" },
+  lumagl: { Icon: LumaGlIcon, name: "luma.gl" },
+  aws: { Icon: AwsIcon, name: "AWS" },
+  cdk: { Icon: CdkIcon, name: "CDK" },
+  axum: { Icon: AxumIcon, name: "Axum" },
+  tauri: { Icon: TauriIcon, name: "Tauri" },
+  terraform: { Icon: TerraformIcon, name: "Terraform" },
+} satisfies Record<string, Tool>;
+
+// Where the project runs (shown in the card footer).
+const P = {
+  web: { Icon: WebIcon, name: "Web" },
+  macos: { Icon: AppleIcon, name: "macOS" },
+  cli: { Icon: CommandPromptIcon, name: "CLI" },
+  library: { Icon: CodeIcon, name: "Library" },
+} satisfies Record<string, Tool>;
 
 const projects = [
   {
@@ -33,19 +60,19 @@ const projects = [
     description: "Live weather on a deck.gl map, served from the AWS free tier.",
     image: stormdeck,
     href: "https://stormdeck.live",
-    platforms: [WebIcon],
+    platforms: [P.web],
     skills: [
-      Rust,
-      TypeScriptIcon,
-      ReactIcon,
-      TailwindIcon,
-      ViteIcon,
-      DeckGlIcon,
-      MapLibreIcon,
-      WebGlIcon,
-      LumaGlIcon,
-      AwsIcon,
-      CdkIcon,
+      T.rust,
+      T.ts,
+      T.react,
+      T.tailwind,
+      T.vite,
+      T.deckgl,
+      T.maplibre,
+      T.webgl,
+      T.lumagl,
+      T.aws,
+      T.cdk,
     ],
   },
   {
@@ -53,66 +80,48 @@ const projects = [
     description: "A deck.gl v9 wind-particle layer, advected on the GPU.",
     image: deckWindLayer,
     href: "https://github.com/johncarmack1984/deck-wind-layer",
-    platforms: [WebIcon],
-    skills: [TypeScriptIcon, DeckGlIcon, WebGlIcon, LumaGlIcon, ViteIcon],
+    platforms: [P.web],
+    skills: [T.ts, T.deckgl, T.webgl, T.lumagl, T.vite],
   },
   {
     title: "Manifest",
     description: "Self-hosted AWS cost & inventory dashboard.",
     image: manifest,
     href: "https://github.com/johncarmack1984/manifest",
-    platforms: [WebIcon],
-    skills: [
-      Rust,
-      AxumIcon,
-      TypeScriptIcon,
-      ReactIcon,
-      TailwindIcon,
-      ViteIcon,
-      AwsIcon,
-      CdkIcon,
-    ],
+    platforms: [P.web],
+    skills: [T.rust, T.axum, T.ts, T.react, T.tailwind, T.vite, T.aws, T.cdk],
   },
   {
     title: "typed-geojson",
     description: "Strongly-typed GeoJSON for Rust.",
     image: typedGeojson,
     href: "https://github.com/johncarmack1984/typed-geojson",
-    platforms: [CodeIcon],
-    skills: [Rust, TypeScriptIcon],
+    platforms: [P.library],
+    skills: [T.rust, T.ts],
   },
   {
     title: "tauri-typed-ipc",
     description: "Type-safe Tauri IPC from a single Rust trait.",
     image: tauriTypedIpc,
     href: "https://github.com/johncarmack1984/tauri-typed-ipc",
-    platforms: [CodeIcon],
-    skills: [Rust, TauriIcon, TypeScriptIcon, ViteIcon],
+    platforms: [P.library],
+    skills: [T.rust, T.tauri, T.ts, T.vite],
   },
   {
     title: "Lux",
     description: "A light controller for USB DMX devices.",
     image: lux,
     href: "https://github.com/johncarmack1984/lux",
-    platforms: [AppleIcon],
-    skills: [
-      Rust,
-      AxumIcon,
-      TypeScriptIcon,
-      ReactIcon,
-      NextJsIcon,
-      TailwindIcon,
-      TauriIcon,
-      TerraformIcon,
-    ],
+    platforms: [P.macos],
+    skills: [T.rust, T.axum, T.ts, T.react, T.next, T.tailwind, T.tauri, T.terraform],
   },
   {
     title: "Deep Freeze",
     description: "Migrate from DropBox Business to S3 Deep Archive.",
     image: deepFreeze,
     href: "https://github.com/johncarmack1984/deep-freeze",
-    platforms: [CommandPromptIcon],
-    skills: [Rust, AwsIcon, TerraformIcon],
+    platforms: [P.cli],
+    skills: [T.rust, T.aws, T.terraform],
   },
 ];
 
