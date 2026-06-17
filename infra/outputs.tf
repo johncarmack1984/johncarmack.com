@@ -12,3 +12,8 @@ output "distribution_domain_name" {
   description = "CloudFront domain — verify the site here before cutting over DNS."
   value       = aws_cloudfront_distribution.site.domain_name
 }
+
+output "deploy_role_arn" {
+  description = "Set as the AWS_DEPLOY_ROLE_ARN repo variable for the deploy workflow."
+  value       = aws_iam_role.deploy.arn
+}
