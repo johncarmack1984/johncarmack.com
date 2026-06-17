@@ -10,12 +10,17 @@ import AppleIcon from "@/components/ui/icons/apple";
 import AwsIcon from "@/components/ui/icons/aws";
 import CodeIcon from "@/components/ui/icons/code";
 import CommandPromptIcon from "@/components/ui/icons/command";
+import DeckGlIcon from "@/components/ui/icons/deckgl";
 import MapLibreIcon from "@/components/ui/icons/maplibre";
+import NextJsIcon from "@/components/ui/icons/nextjs";
 import ReactIcon from "@/components/ui/icons/react";
 import Rust from "@/components/ui/icons/rust";
+import TailwindIcon from "@/components/ui/icons/tailwind";
 import TauriIcon from "@/components/ui/icons/tauri";
 import TerraformIcon from "@/components/ui/icons/terraform";
 import TypeScriptIcon from "@/components/ui/icons/typescript";
+import ViteIcon from "@/components/ui/icons/vite";
+import WebGlIcon from "@/components/ui/icons/webgl";
 import WebIcon from "@/components/ui/icons/web";
 import Project from "./project";
 
@@ -26,7 +31,17 @@ const projects = [
     image: stormdeck,
     href: "https://stormdeck.live",
     platforms: [WebIcon],
-    skills: [Rust, ReactIcon, MapLibreIcon, AwsIcon],
+    skills: [
+      Rust,
+      TypeScriptIcon,
+      ReactIcon,
+      TailwindIcon,
+      ViteIcon,
+      DeckGlIcon,
+      MapLibreIcon,
+      WebGlIcon,
+      AwsIcon,
+    ],
   },
   {
     title: "deck-wind-layer",
@@ -34,7 +49,7 @@ const projects = [
     image: deckWindLayer,
     href: "https://github.com/johncarmack1984/deck-wind-layer",
     platforms: [WebIcon],
-    skills: [TypeScriptIcon, MapLibreIcon],
+    skills: [TypeScriptIcon, DeckGlIcon, WebGlIcon, ViteIcon],
   },
   {
     title: "Manifest",
@@ -42,7 +57,7 @@ const projects = [
     image: manifest,
     href: "https://github.com/johncarmack1984/manifest",
     platforms: [WebIcon],
-    skills: [Rust, ReactIcon, AwsIcon, TypeScriptIcon],
+    skills: [Rust, TypeScriptIcon, ReactIcon, TailwindIcon, ViteIcon, AwsIcon],
   },
   {
     title: "typed-geojson",
@@ -50,7 +65,7 @@ const projects = [
     image: typedGeojson,
     href: "https://github.com/johncarmack1984/typed-geojson",
     platforms: [CodeIcon],
-    skills: [Rust],
+    skills: [Rust, TypeScriptIcon],
   },
   {
     title: "tauri-typed-ipc",
@@ -58,7 +73,7 @@ const projects = [
     image: tauriTypedIpc,
     href: "https://github.com/johncarmack1984/tauri-typed-ipc",
     platforms: [CodeIcon],
-    skills: [Rust, TauriIcon, TypeScriptIcon],
+    skills: [Rust, TauriIcon, TypeScriptIcon, ViteIcon],
   },
   {
     title: "Lux",
@@ -66,15 +81,15 @@ const projects = [
     image: lux,
     href: "https://github.com/johncarmack1984/lux",
     platforms: [AppleIcon],
-    skills: [Rust, ReactIcon],
+    skills: [Rust, TypeScriptIcon, ReactIcon, NextJsIcon, TailwindIcon, TauriIcon],
   },
   {
     title: "Deep Freeze",
     description: "Migrate from DropBox Business to S3 Deep Archive.",
     image: deepFreeze,
     href: "https://github.com/johncarmack1984/deep-freeze",
-    skills: [Rust, TerraformIcon],
     platforms: [CommandPromptIcon],
+    skills: [Rust, AwsIcon, TerraformIcon],
   },
 ];
 
