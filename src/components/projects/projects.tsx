@@ -1,14 +1,65 @@
+import deckWindLayer from "@/assets/img/deck-wind-layer.webp";
 import deepFreeze from "@/assets/img/deep-freeze.webp";
 import lux from "@/assets/img/lux.webp";
+import manifest from "@/assets/img/manifest.webp";
+import stormdeck from "@/assets/img/stormdeck.webp";
+import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
+import typedGeojson from "@/assets/img/typed-geojson.webp";
 
 import AppleIcon from "@/components/ui/icons/apple";
+import AwsIcon from "@/components/ui/icons/aws";
+import CodeIcon from "@/components/ui/icons/code";
 import CommandPromptIcon from "@/components/ui/icons/command";
+import MapLibreIcon from "@/components/ui/icons/maplibre";
 import ReactIcon from "@/components/ui/icons/react";
 import Rust from "@/components/ui/icons/rust";
+import TauriIcon from "@/components/ui/icons/tauri";
 import TerraformIcon from "@/components/ui/icons/terraform";
+import TypeScriptIcon from "@/components/ui/icons/typescript";
+import WebIcon from "@/components/ui/icons/web";
 import Project from "./project";
 
 const projects = [
+  {
+    title: "Stormdeck",
+    description: "Live weather on a deck.gl map, served from the AWS free tier.",
+    image: stormdeck,
+    href: "https://stormdeck.live",
+    platforms: [WebIcon],
+    skills: [Rust, ReactIcon, MapLibreIcon, AwsIcon],
+  },
+  {
+    title: "deck-wind-layer",
+    description: "A deck.gl v9 wind-particle layer, advected on the GPU.",
+    image: deckWindLayer,
+    href: "https://github.com/johncarmack1984/deck-wind-layer",
+    platforms: [WebIcon],
+    skills: [TypeScriptIcon, MapLibreIcon],
+  },
+  {
+    title: "Manifest",
+    description: "Self-hosted AWS cost & inventory dashboard.",
+    image: manifest,
+    href: "https://github.com/johncarmack1984/manifest",
+    platforms: [WebIcon],
+    skills: [Rust, ReactIcon, AwsIcon, TypeScriptIcon],
+  },
+  {
+    title: "typed-geojson",
+    description: "Strongly-typed GeoJSON for Rust.",
+    image: typedGeojson,
+    href: "https://github.com/johncarmack1984/typed-geojson",
+    platforms: [CodeIcon],
+    skills: [Rust],
+  },
+  {
+    title: "tauri-typed-ipc",
+    description: "Type-safe Tauri IPC from a single Rust trait.",
+    image: tauriTypedIpc,
+    href: "https://github.com/johncarmack1984/tauri-typed-ipc",
+    platforms: [CodeIcon],
+    skills: [Rust, TauriIcon, TypeScriptIcon],
+  },
   {
     title: "Lux",
     description: "A light controller for USB DMX devices.",
