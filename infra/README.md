@@ -16,6 +16,7 @@ to the bucket.
   provisions in one apply.
 - `aws_cloudfront_distribution.site` — fronts the bucket, redirect-to-https, compression,
   managed `CachingOptimized` policy, SPA fallback (403/404 → `/index.html`).
+- `aws_iam_role.deploy` (`github-actions-johncarmack-com-deploy`) — the OIDC role the deploy workflow assumes; trust pinned to this repo's `main`, permissions scoped to S3 site sync + CloudFront invalidation. Reuses the account's shared GitHub OIDC provider (referenced as a `data` source, created by `my-infra/github-oidc`).
 
 The **live** A/CNAME records (`johncarmack.com` → this distribution) stay in the
 `dns` root of `my-infra-private`, which owns all hosted-zone records account-wide.
@@ -34,7 +35,16 @@ State: `s3://john-carmack-terraform-state/johncarmack.com/terraform.tfstate`.
 
 ## Deploy the site
 
-From the repo root (uses the Terraform outputs):
+Pushing to `main` deploys automatically: `.github/workflows/deploy.yml` builds the site and assumes the OIDC deploy role to sync S3 and invalidate CloudFront — no AWS keys in CI.
+
+One-time wiring (creates the deploy role, then sets the `AWS_DEPLOY_ROLE_ARN` and `DISTRIBUTION_ID` repo variables the workflow reads):
+
+```sh
+export AWS_PROFILE=newearth-admin   # account 735853783919
+just setup-deploy
+```
+
+Manual fallback — publish the local build straight from your machine:
 
 ```sh
 just deploy        # bun run build + s3 sync + CloudFront invalidation

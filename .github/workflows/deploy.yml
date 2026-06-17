@@ -1,0 +1,87 @@
+name: deploy
+
+# Continuous deployment: every push to main builds the site and publishes it to
+# S3 + CloudFront. No AWS keys — the job assumes an OIDC role (infra/github-oidc.tf)
+# whose trust is pinned to this repo's main branch. One-time wiring: `just setup-deploy`.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'infra/**'
+      - '**/*.md'
+  workflow_dispatch:
+
+permissions:
+  id-token: write # mint the OIDC token used to assume the AWS role
+  contents: read
+  deployments: write # record the publish under the repo's Deployments view
+
+concurrency: deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Skip until the one-time setup runs (`just setup-deploy` sets these repo
+    # variables). Lets this workflow merge to main without a failing red run
+    # before AWS is wired up.
+    if: ${{ vars.AWS_DEPLOY_ROLE_ARN != '' }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Build
+        run: bun run build
+
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Publish to S3
+        env:
+          BUCKET: johncarmack-com-site # fixed name; see infra/variables.tf
+        run: |
+          set -euo pipefail
+          # Content-hashed build assets never change under a given name, so cache
+          # them forever. assets/patterns/* are verbatim public/ files with stable
+          # names, so they're excluded here and revalidated in the next pass.
+          aws s3 sync dist/ "s3://$BUCKET" --delete \
+            --exclude "*" --include "assets/*" --exclude "assets/patterns/*" \
+            --cache-control "public, max-age=31536000, immutable"
+          # Everything else (HTML, icons, manifest, og image, robots, sitemap,
+          # pattern textures) must always revalidate so a deploy is visible at once.
+          aws s3 sync dist/ "s3://$BUCKET" --delete \
+            --exclude "assets/*" --include "assets/patterns/*" \
+            --cache-control "no-cache"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.DISTRIBUTION_ID }}" \
+            --paths "/*"
+
+      # Record the publish as a GitHub Deployment to `production` so the repo's
+      # Deployments view tracks what's live. Done via the API rather than a
+      # job-level `environment:` — that key rewrites the OIDC subject to
+      # repo:…:environment:production, which the role's main-ref trust rejects.
+      - name: Record production deployment
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          body=$(jq -nc --arg ref "$GITHUB_SHA" \
+            '{ref:$ref, environment:"production", production_environment:true, auto_merge:false, required_contexts:[], description:"Published to production"}')
+          id=$(gh api -X POST "repos/$GITHUB_REPOSITORY/deployments" --input - <<<"$body" --jq '.id')
+          gh api -X POST "repos/$GITHUB_REPOSITORY/deployments/$id/statuses" \
+            -f state=success \
+            -f environment=production \
+            -f environment_url=https://johncarmack.com \
+            -f description="Published to production" >/dev/null
+          echo "Recorded production deployment $id"
