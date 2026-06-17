@@ -12,7 +12,7 @@ deploy: build
     aws s3 sync dist/ "s3://$(terraform -chdir=infra output -raw bucket)" --delete
     aws cloudfront create-invalidation \
         --distribution-id "$(terraform -chdir=infra output -raw distribution_id)" \
-        --paths "/*"
+        --paths "/" "/index.html"
 
 # One-time: create the GitHub Actions OIDC deploy role (infra/github-oidc.tf) and
 # wire the two repo variables the deploy workflow reads. Needs AWS_PROFILE=newearth-admin

@@ -1,0 +1,40 @@
+name: ci
+
+# PR gate: typecheck + build the app and check the Terraform before merge to main.
+# No deploy and no AWS credentials — purely correctness checks.
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - name: Typecheck
+        run: bun run typecheck
+      - name: Build
+        run: bun run build
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: hashicorp/setup-terraform@v3
+      - name: Format
+        run: terraform -chdir=infra fmt -check -recursive
+      - name: Validate
+        # -backend=false validates the config without touching remote state, so
+        # this needs no AWS credentials.
+        run: |
+          terraform -chdir=infra init -backend=false
+          terraform -chdir=infra validate
