@@ -1,5 +1,6 @@
 import AwsIcon from "@/components/ui/icons/aws";
 import D3Icon from "@/components/ui/icons/d3";
+import DeckGlIcon from "@/components/ui/icons/deckgl";
 import GitHubActionsIcon from "@/components/ui/icons/github-actions";
 import JavaScriptIcon from "@/components/ui/icons/javascript";
 import KubernetesIcon from "@/components/ui/icons/kubernetes";
@@ -11,9 +12,12 @@ import PythonIcon from "@/components/ui/icons/python";
 import ReactIcon from "@/components/ui/icons/react";
 import RustIcon from "@/components/ui/icons/rust";
 import SnowflakeIcon from "@/components/ui/icons/snowflake";
+import TailwindIcon from "@/components/ui/icons/tailwind";
 import TauriIcon from "@/components/ui/icons/tauri";
 import TerraformIcon from "@/components/ui/icons/terraform";
 import TypeScriptIcon from "@/components/ui/icons/typescript";
+import ViteIcon from "@/components/ui/icons/vite";
+import WebGlIcon from "@/components/ui/icons/webgl";
 import Skill from "./skill";
 
 const skills = [
@@ -21,10 +25,14 @@ const skills = [
   { Icon: TypeScriptIcon, name: "TypeScript" },
   { Icon: JavaScriptIcon, name: "JavaScript" },
   { Icon: ReactIcon, name: "React" },
+  { Icon: TailwindIcon, name: "Tailwind CSS" },
   { Icon: NextJsIcon, name: "Next.js" },
+  { Icon: ViteIcon, name: "Vite" },
   { Icon: NodeJsIcon, name: "Node.js" },
   { Icon: TauriIcon, name: "Tauri" },
   { Icon: MapLibreIcon, name: "MapLibre" },
+  { Icon: DeckGlIcon, name: "deck.gl" },
+  { Icon: WebGlIcon, name: "WebGL" },
   { Icon: D3Icon, name: "D3.js" },
   { Icon: PythonIcon, name: "Python" },
   { Icon: PostgreSqlIcon, name: "PostgreSQL" },
