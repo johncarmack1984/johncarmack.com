@@ -1,5 +1,6 @@
 import deckWindLayer from "@/assets/img/deck-wind-layer.webp";
 import deepFreeze from "@/assets/img/deep-freeze.webp";
+import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
 import lux from "@/assets/img/lux.webp";
 import manifest from "@/assets/img/manifest.webp";
 import stormdeck from "@/assets/img/stormdeck.webp";
@@ -84,12 +85,20 @@ const projects = [
     skills: [T.ts, T.deckgl, T.webgl, T.lumagl, T.vite],
   },
   {
-    title: "Manifest",
-    description: "Self-hosted AWS cost & inventory dashboard.",
-    image: manifest,
-    href: "https://github.com/johncarmack1984/manifest",
+    title: "geo-desktop-bench",
+    description: "Finding the fastest geospatial desktop stack.",
+    image: geoDesktopBench,
+    href: "https://geobench.johncarmack.com",
     platforms: [P.web],
-    skills: [T.rust, T.axum, T.ts, T.react, T.tailwind, T.vite, T.aws, T.cdk],
+    skills: [T.rust, T.ts, T.deckgl, T.maplibre, T.webgl, T.lumagl, T.tauri],
+  },
+  {
+    title: "Lux",
+    description: "A light controller for USB DMX devices.",
+    image: lux,
+    href: "https://github.com/johncarmack1984/lux",
+    platforms: [P.macos],
+    skills: [T.rust, T.axum, T.ts, T.react, T.next, T.tailwind, T.tauri, T.terraform],
   },
   {
     title: "typed-geojson",
@@ -108,12 +117,12 @@ const projects = [
     skills: [T.rust, T.tauri, T.ts, T.vite],
   },
   {
-    title: "Lux",
-    description: "A light controller for USB DMX devices.",
-    image: lux,
-    href: "https://github.com/johncarmack1984/lux",
-    platforms: [P.macos],
-    skills: [T.rust, T.axum, T.ts, T.react, T.next, T.tailwind, T.tauri, T.terraform],
+    title: "Manifest",
+    description: "Self-hosted AWS cost & inventory dashboard.",
+    image: manifest,
+    href: "https://github.com/johncarmack1984/manifest",
+    platforms: [P.web],
+    skills: [T.rust, T.axum, T.ts, T.react, T.tailwind, T.vite, T.aws, T.cdk],
   },
   {
     title: "Deep Freeze",
