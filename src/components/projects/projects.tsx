@@ -1,3 +1,4 @@
+import acceptPayments from "@/assets/img/accept-payments.webp";
 import deckWindLayer from "@/assets/img/deck-wind-layer.webp";
 import deepFreeze from "@/assets/img/deep-freeze.webp";
 import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
@@ -19,6 +20,7 @@ import MapLibreIcon from "@/components/ui/icons/maplibre";
 import NextJsIcon from "@/components/ui/icons/nextjs";
 import ReactIcon from "@/components/ui/icons/react";
 import Rust from "@/components/ui/icons/rust";
+import StripeIcon from "@/components/ui/icons/stripe";
 import TailwindIcon from "@/components/ui/icons/tailwind";
 import TauriIcon from "@/components/ui/icons/tauri";
 import TerraformIcon from "@/components/ui/icons/terraform";
@@ -43,6 +45,7 @@ const T = {
   aws: { Icon: AwsIcon, name: "AWS" },
   cdk: { Icon: CdkIcon, name: "CDK" },
   axum: { Icon: AxumIcon, name: "Axum" },
+  stripe: { Icon: StripeIcon, name: "Stripe" },
   tauri: { Icon: TauriIcon, name: "Tauri" },
   terraform: { Icon: TerraformIcon, name: "Terraform" },
 } satisfies Record<string, Tool>;
@@ -123,6 +126,14 @@ const projects = [
     href: "https://github.com/johncarmack1984/manifest",
     platforms: [P.web],
     skills: [T.rust, T.axum, T.ts, T.react, T.tailwind, T.vite, T.aws, T.cdk],
+  },
+  {
+    title: "accept-payments",
+    description: "A Rust payments & invoicing API on AWS Lambda.",
+    image: acceptPayments,
+    href: "https://github.com/johncarmack1984/accept-payments",
+    platforms: [P.web],
+    skills: [T.rust, T.axum, T.stripe, T.ts, T.react, T.aws],
   },
   {
     title: "Deep Freeze",
