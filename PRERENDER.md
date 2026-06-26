@@ -1,54 +1,39 @@
-# Prerender plan: fix LCP 6.5s + the 6-word body shell
+# Prerendering
 
-## Problem (from the seo-kit audit, 2026-06-26)
+The site is a single-route Vite + React 18 SPA. Without prerendering, the served HTML is an empty `<div id="root"></div>` (about 6 words of text), which hurts two things:
+- **GEO/SEO:** non-JS crawlers and most LLM answer engines see no body content, only the head.
+- **LCP:** the largest contentful paint waits for the JS bundle to download, parse, and render (measured ~6.5s, "poor").
 
-The site is a client-rendered Vite + React 18 SPA. The served HTML is an empty `<div id="root"></div>` (about 6 words of text), so:
-- **GEO/SEO:** non-JS crawlers and most LLM answer engines see no body content (only the head, which now has title + Person schema).
-- **LCP 6.5s (poor):** the largest contentful paint waits for the JS bundle to download, parse, and render. Confirmed Google ranking signal.
+Both are fixed by rendering the route to static HTML at build time and hydrating it on the client: the body content lands in the initial HTML (crawlers and LLMs read it, the LCP paints immediately) and React attaches on load.
 
-Both are fixed by **prerendering the route to static HTML at build time, then hydrating**: the body content lands in the initial HTML (crawlers + LLMs read it, LCP paints immediately), and React attaches on load.
+## How it works
 
-## Recommended approach: `vite-react-ssg`
+A small custom Vite SSR prerender, no extra runtime dependencies (`react-dom/server` is already present). It deliberately injects **only** the rendered `#root` body and leaves `index.html`'s `<head>` (title, meta, canonical, Person/ProfilePage JSON-LD) untouched, so the hand-tuned head/schema is never rewritten.
 
-It is the maintained tool that wires Vite's SSR build + prerender (rolling our own would mean replicating Vite SSR plumbing; `react-snap` is the no-Vite-SSR fallback but is unmaintained and flaky on React 18 hydration). Single route, no data, so the migration is small.
+- `src/app-tree.tsx` -- the single React tree (StrictMode + ThemeProvider + App), imported by both entries so the server and client render identically (hydration parity).
+- `src/main.tsx` -- client entry: `hydrateRoot` (was `createRoot().render`).
+- `src/entry-server.tsx` -- server entry: exports `render()` = `renderToString(<AppTree/>)`.
+- `prerender.mjs` -- reads the client build's `dist/index.html`, replaces the empty `<div id="root"></div>` with the rendered markup, writes it back.
 
-### Steps
-1. `bun add vite-react-ssg react-router-dom`
-2. `src/main.tsx` - replace the `createRoot().render()` with the SSG entry, keeping the ThemeProvider as the layout:
-   ```tsx
-   import { ViteReactSSG } from "vite-react-ssg";
-   import { ThemeProvider } from "@/components/theme-provider";
-   import App from "./App";
-   import "./globals.css";
+Build pipeline (`bun run build`):
+1. `vite build` -> `dist/` (client assets + empty-root `index.html`).
+2. `vite build --ssr src/entry-server.tsx --outDir dist-server` -> `dist-server/entry-server.js`.
+3. `node prerender.mjs` -> rewrites `dist/index.html` with the rendered `#root`.
 
-   const routes = [{ path: "/", element: <App /> }];
+`dist-server/` is a throwaway build artifact (gitignored).
 
-   export const createRoot = ViteReactSSG(
-     { routes },
-     ({ router, isClient }) => {
-       // wrap-all setup if needed
-     },
-     {
-       // render the tree inside ThemeProvider on both server + client
-     },
-   );
-   ```
-   (If the wrapper option is awkward, make a `Layout` route element that renders `<ThemeProvider><Outlet/></ThemeProvider>` and nest `App` under it. ThemeProvider must wrap on the server too, or hydration will mismatch.)
-3. `package.json` build script: `"build": "vite-react-ssg build"` (dev/preview/typecheck unchanged).
-4. `index.html` - keep the inline pre-paint theme script. Add `suppressHydrationWarning` on the elements next-themes mutates if a warning appears (it sets `data-theme` on `<html>`, which the inline script also sets; this is the most likely hydration warning source).
+## Why not vite-react-ssg / react-snap
 
-### Gotchas specific to this codebase (verify each)
-- **next-themes:** renders children on the server fine, but the `data-theme` attribute is client/inline-script set, so expect a possible hydration warning on `<html>`. The existing inline script in `index.html` already prevents the visual flash; keep it. Use `suppressHydrationWarning` if needed.
-- **framer-motion:** SSR-safe, but entrance animations can flash on hydrate. Audit any `initial=` animations in the hero; set `initial={false}` where the first paint should match the prerendered state (this matters for LCP - the LCP element must not animate in from opacity 0).
-- **Direct browser-API access:** grep `src/` for `window`, `document`, `localStorage`, `matchMedia` used during render (not in effects). Any such use must be guarded with `typeof window !== "undefined"` or moved into `useEffect`, or the build's renderToString step throws.
-- **Single route only:** sitemap has 1 URL, so SSG prerenders exactly `/`. No route list to maintain yet.
+`vite-react-ssg` manages the `<head>` and requires pulling in `react-router-dom` for what is a single static route; a custom prerender keeps the head 100% under our control and adds no dependencies. `react-snap` is a puppeteer post-build snapshot but is unmaintained and flaky on React 18 hydration.
 
-### Test before merging (this repo auto-deploys to prod on merge)
-1. `bun run build` then check `dist/index.html` - the `#root` div should now contain the rendered hero/projects/skills text, not be empty.
-2. `seo-kit audit johncarmack.com --only crawl` - `raw_html_words` should jump from ~6 to several hundred, `h1_raw` should be populated, `render.thin_shell` finding should clear.
-3. `bun run preview` and load in a browser: confirm it hydrates with **no console errors/warnings**, the theme toggle works, animations are not broken, and interactivity is intact.
-4. Re-run PageSpeed (the `psi` provider) and confirm LCP drops well under 2.5s.
-5. Only then: PR -> verify CI -> merge (which deploys). Do not merge on a green build alone; the browser hydration check in step 3 is the gate.
+## Verifying a change to the render path
 
-## Fallback if vite-react-ssg fights the ThemeProvider/motion setup
-`react-snap` (postbuild puppeteer snapshot): switch `createRoot` -> `hydrateRoot` in `main.tsx`, add `"postbuild": "react-snap"` and a `reactSnap` config. Less code, but unmaintained and React 18 `hydrateRoot` can warn; treat as plan B.
+This repo auto-deploys to prod on merge to main, so verify before merging:
+1. `bun run build`, then confirm `dist/index.html`'s `#root` contains the rendered hero/projects/skills text (not empty) and the head still has the title + Person schema.
+2. `bun run preview` and load in a browser (or headless via CDP): hydration must produce **no console errors/warnings**, the theme toggle must open and switch the theme, and `#root` DOM nodes must carry a `__reactFiber$` key (proof React hydrated rather than silently client-rendered).
+3. After deploy, re-run PageSpeed on the live URL and confirm LCP is well under 2.5s (LCP can only be measured on a public URL).
+
+## Hydration notes specific to this codebase
+- **next-themes** sets `data-theme` on `<html>`, which is outside the `#root` hydration boundary, so it does not cause mismatches. The inline pre-paint theme script in `index.html` stays (it runs before `#root` and prevents the flash). next-themes also renders its own script inside the provider; the two are idempotent.
+- **framer-motion** is SSR-safe. The only `initial={{opacity:0}}` is the mobile-nav sheet (an overlay), not the LCP element, so the hero is not animated in from transparent.
+- No component reads a browser API (`window`/`document`/`localStorage`/`matchMedia`) during render; the theme-dependent hero background reads through `useSunHidden`, which defaults to a stable value and only touches the theme in `useEffect`.
