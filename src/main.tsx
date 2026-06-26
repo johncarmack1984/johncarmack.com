@@ -1,14 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 
-import { ThemeProvider } from "@/components/theme-provider";
-import App from "./App";
+import { AppTree } from "@/app-tree";
 import "./globals.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
-);
+// The HTML is prerendered to static markup at build time (see prerender.mjs),
+// so the client hydrates the existing #root rather than rendering from empty.
+hydrateRoot(document.getElementById("root")!, <AppTree />);
