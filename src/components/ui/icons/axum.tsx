@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { SkillIcon } from "@/components/skills/skill";
 
-// Axum has no brand mark — stacked service bars, for a Rust web/API server.
+// Axum has no brand mark: stacked service bars, for a Rust web/API server.
 const AxumIcon: SkillIcon = ({ className, ...props }) => {
   return (
     <svg viewBox="0 0 24 24" className={cn(className)} {...props}>
