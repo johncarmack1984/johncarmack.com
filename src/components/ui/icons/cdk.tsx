@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { SkillIcon } from "@/components/skills/skill";
 
-// AWS CDK has no monochrome brand mark — two stacked tiles, for composable constructs.
+// AWS CDK has no monochrome brand mark: two stacked tiles, for composable constructs.
 const CdkIcon: SkillIcon = ({ className, ...props }) => {
   return (
     <svg viewBox="0 0 24 24" className={cn(className)} {...props}>

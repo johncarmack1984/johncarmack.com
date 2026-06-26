@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { SkillIcon } from "@/components/skills/skill";
 
-// deck.gl has no monochrome brand mark, so this is a flat-top hexagon "cell" —
+// deck.gl has no monochrome brand mark, so this is a flat-top hexagon "cell",
 // its signature HexagonLayer bin. The skill label spells out the name.
 const DeckGlIcon: SkillIcon = ({ className, ...props }) => {
   return (
