@@ -10,6 +10,8 @@ function HeroImage() {
         className="relative z-20 h-auto w-full"
         src={john}
         alt="John Carmack"
+        width={1005}
+        height={902}
         fetchPriority="high"
       />
     </div>

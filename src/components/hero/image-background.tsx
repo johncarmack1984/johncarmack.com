@@ -53,6 +53,8 @@ function HeroImageBackground() {
         )}
         src={day}
         alt="Day Theme Backdrop"
+        width={1005}
+        height={902}
         loading="lazy"
         fetchPriority="low"
       />
@@ -62,6 +64,8 @@ function HeroImageBackground() {
         )}
         src={night}
         alt="Night Theme Backdrop"
+        width={1005}
+        height={902}
         loading="lazy"
         fetchPriority="low"
       />
