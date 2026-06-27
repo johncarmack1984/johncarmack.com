@@ -1,4 +1,4 @@
-import john from "@/assets/img/john.webp";
+import john from "@/assets/img/john.avif";
 
 import HeroImageBackground from "@/components/hero/image-background";
 
