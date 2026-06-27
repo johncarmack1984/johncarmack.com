@@ -76,13 +76,11 @@
       }
     </script>
 
-    <!-- Inter, matching the previous next/font setup -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=optional"
-      rel="stylesheet"
-    />
+    <!-- Self-hosted Inter Variable (see @font-face in globals.css). Deliberately
+         not preloaded: font-display:optional already guarantees no swap/shift, so
+         the LCP hero image keeps bandwidth priority. Inter loads at normal priority
+         and is cached for subsequent paints. -->
+
 
     <!-- Set the theme before first paint to avoid a flash (mirrors next-themes). -->
     <script>
