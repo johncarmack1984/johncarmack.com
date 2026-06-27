@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Self-hosted Inter Variable (latin, weight axis), replacing the render-blocking
+   Google Fonts request. Paired with a same-origin preload in index.html, the font
+   is ready before first paint, so font-display:optional applies it with no swap
+   and therefore no layout shift. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url("/fonts/inter-variable.woff2") format("woff2");
+}
+
 :root {
   --color-001: hsl(0, 0%, 100%);
   --color-002: hsl(180, 100%, 3%);

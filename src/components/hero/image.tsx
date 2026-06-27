@@ -7,7 +7,7 @@ function HeroImage() {
     <div className="relative z-10 basis-1/3 overflow-clip transition">
       <HeroImageBackground />
       <img
-        className="relative z-20 h-auto w-full"
+        className="relative z-20 aspect-[1005/902] h-auto w-full"
         src={john}
         alt="John Carmack"
         width={1005}
