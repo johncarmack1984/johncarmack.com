@@ -9,10 +9,11 @@ function HeroText() {
         Hi. I'm John Carmack.
       </h1>
       <p className="text-muted-foreground text-lg">
-        I'm a senior full-stack engineer: Rust and TypeScript, GPU and
-        geospatial front ends to cloud infrastructure. Recently the primary
-        author of a safety-critical desktop aviation application and lone
-        architect of a real-time analytics platform.
+        I'm a software engineer focused on production LLM/AI and geospatial/GPU
+        systems: Rust and TypeScript, deck.gl and luma.gl to cloud
+        infrastructure. Recently the primary author of a safety-critical
+        aviation desktop application and the lone architect of a real-time
+        analytics platform.
       </p>
     </div>
   );
