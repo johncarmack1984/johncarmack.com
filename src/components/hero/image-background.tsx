@@ -53,6 +53,8 @@ function HeroImageBackground() {
         )}
         src={day}
         alt="Day Theme Backdrop"
+        loading="lazy"
+        fetchPriority="low"
       />
       <img
         className={cn(
@@ -60,6 +62,8 @@ function HeroImageBackground() {
         )}
         src={night}
         alt="Night Theme Backdrop"
+        loading="lazy"
+        fetchPriority="low"
       />
     </>
   );

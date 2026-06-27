@@ -44,6 +44,7 @@ function Project({
         <a aria-label={title} href={href}>
           <img
             alt={title}
+            loading="lazy"
             className="aspect-video h-32 w-full rounded-md object-cover transition-transform duration-500 hover:scale-105"
             src={image}
             style={{
