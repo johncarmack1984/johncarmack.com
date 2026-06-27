@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
-import day from "@/assets/img/day.webp";
-import night from "@/assets/img/night.webp";
+import day from "@/assets/img/day.avif";
+import night from "@/assets/img/night.avif";
 import useSunHidden from "@/hooks/useSunHidden";
 import { cn } from "@/lib/utils";
 
