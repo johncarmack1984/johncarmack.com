@@ -4,6 +4,7 @@ import deepFreeze from "@/assets/img/deep-freeze.webp";
 import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
 import lux from "@/assets/img/lux.webp";
 import manifest from "@/assets/img/manifest.webp";
+import promptward from "@/assets/img/promptward.webp";
 import stormdeck from "@/assets/img/stormdeck.webp";
 import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
 import typedGeojson from "@/assets/img/typed-geojson.webp";
@@ -59,6 +60,15 @@ const P = {
 } satisfies Record<string, Tool>;
 
 const projects = [
+  {
+    title: "promptward",
+    description:
+      "An LLM gateway that blocks prompt injection and proves the detection rate.",
+    image: promptward,
+    href: "https://github.com/johncarmack1984/promptward",
+    platforms: [P.web],
+    skills: [T.rust, T.ts, T.react, T.vite],
+  },
   {
     title: "Stormdeck",
     description: "Live weather on a deck.gl map, served from the AWS free tier.",
