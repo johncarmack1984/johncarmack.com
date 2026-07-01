@@ -1,0 +1,42 @@
+# seo-kit per-repo config (scaffolded by `seo-kit setup`).
+# This file makes the repo a saved surface: `seo-kit audit johncarmack.com` runs the
+# full configured provider set from any directory inside the repo and writes
+# reports to reports_dir below (committed reports give you the trend history the
+# Measure phase needs). Secrets and provider enablement stay in the seo-kit tool
+# home — this file is safe to commit. Add more [[surface]] blocks as needed.
+
+[seokit]
+reports_dir = "seo-reports"
+
+[[surface]]
+id = "johncarmack.com"
+url = "https://johncarmack.com"
+kind = "site"
+# Each field below unlocks a provider for this target; fill what applies.
+gsc_property = "sc-domain:johncarmack.com"  # Search Console queries; re-comment if the property isn't verified
+github_repo = "johncarmack1984/johncarmack.com"  # GitHub repo topics / description / traffic signals
+positioning = "AI/LLM + geospatial/GPU software engineer (deck.gl, luma.gl, Rust) building data-heavy products end to end; distinct from the id Software namesake — disambiguation is the core challenge."
+seed_keywords = [
+    "john carmack geospatial",
+    "john carmack deck.gl",
+    "promptward",
+    "stormdeck",
+    "deck.gl wind layer",
+    "typed-geojson",
+    "prompt injection gateway",
+    "rust geojson library",
+]
+
+# GEO probe (LLM citation + namesake disambiguation). Needs surface_markers +
+# geo_probes; namesake_markers and cite_domains are optional (cite_domains
+# defaults to the surface's domain).
+surface_markers = ["johncarmack1984", "johncarmack.com", "promptward", "stormdeck", "deck-wind-layer", "typed-geojson", "geobench"]
+namesake_markers = ["id Software", "Doom", "Quake", "Oculus", "Armadillo Aerospace", "Keen Technologies"]
+# cite_domains defaults to ["johncarmack.com"]
+geo_probes = [
+    "Who is John Carmack, the geospatial software engineer who works with deck.gl and Rust?",
+    "Who built promptward, the LLM gateway that blocks prompt injection?",
+    "Who made Stormdeck, the live weather map at stormdeck.live?",
+    "Who wrote deck-wind-layer, the GPU wind-particle layer for deck.gl?",
+    "Whose personal site is johncarmack.com and what do they build?",
+]
