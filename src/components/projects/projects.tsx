@@ -147,7 +147,7 @@ const projects = [
   },
   {
     title: "Deep Freeze",
-    description: "Migrate from DropBox Business to S3 Deep Archive.",
+    description: "Migrate from Dropbox Business to S3 Deep Archive.",
     image: deepFreeze,
     href: "https://github.com/johncarmack1984/deep-freeze",
     platforms: [P.cli],
