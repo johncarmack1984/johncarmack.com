@@ -10,10 +10,13 @@ function HeroText() {
       </h1>
       <p className="text-muted-foreground text-lg">
         I'm a software engineer focused on production LLM/AI and geospatial/GPU
-        systems: Rust and TypeScript, deck.gl and luma.gl to cloud
-        infrastructure. Recently the primary author of a safety-critical
-        aviation desktop application and the lone architect of a real-time
-        analytics platform.
+        systems. Rust and TypeScript, deck.gl and luma.gl, and the cloud
+        infrastructure that runs them. Lately: primary author of a
+        safety-critical aviation desktop application, lone architect of a
+        real-time analytics platform.
+      </p>
+      <p className="text-muted-foreground text-lg">
+        Not the Doom guy. Different guy.
       </p>
     </div>
   );
