@@ -1,6 +1,5 @@
 import type { JSX } from "react";
-
-import { IconProps } from "@radix-ui/react-icons/dist/types";
+import type { IconProps } from "@radix-ui/react-icons/dist/types";
 
 import { Card } from "@/components/ui/card";
 

@@ -84,15 +84,15 @@
 
     <!-- Set the theme before first paint to avoid a flash (mirrors next-themes). -->
     <script>
-      (function () {
+      (() => {
         try {
-          var stored = localStorage.getItem("theme");
-          var dark =
+          const stored = localStorage.getItem("theme");
+          const dark =
             stored === "dark" ||
             ((!stored || stored === "system") &&
               window.matchMedia("(prefers-color-scheme: dark)").matches);
           if (dark) document.documentElement.setAttribute("data-theme", "dark");
-        } catch (e) {}
+        } catch {}
       })();
     </script>
   </head>

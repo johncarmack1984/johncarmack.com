@@ -1,3 +1,7 @@
+// The prerender runs under NODE on purpose: under bun, react-dom/server
+// resolves through bun's own export conditions and emits different markup
+// (verified 2026-07-06 -- the theme inline script renders into #root under bun
+// but not node). One runtime owns the prerendered bytes; it is node.
 // Build-time prerender: render the app to static HTML and inject it into the
 // client build's index.html, so crawlers and LLM answer engines see real body
 // content (not an empty shell) and the browser paints the LCP immediately.
@@ -23,5 +27,10 @@ if (!template.includes(marker)) {
   );
 }
 
-writeFileSync(indexPath, template.replace(marker, `<div id="root">${appHtml}</div>`));
-console.log(`prerender: injected ${appHtml.length} chars of HTML into dist/index.html`);
+writeFileSync(
+  indexPath,
+  template.replace(marker, `<div id="root">${appHtml}</div>`),
+);
+console.log(
+  `prerender: injected ${appHtml.length} chars of HTML into dist/index.html`,
+);

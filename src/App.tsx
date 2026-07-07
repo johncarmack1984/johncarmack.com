@@ -1,9 +1,9 @@
-import SiteNav from "@/components/nav/nav";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import Hero from "@/components/hero/hero";
-import Skills from "@/components/skills/skills";
-import Projects from "@/components/projects/projects";
 import Contact from "@/components/contact";
+import Hero from "@/components/hero/hero";
+import SiteNav from "@/components/nav/nav";
+import Projects from "@/components/projects/projects";
+import Skills from "@/components/skills/skills";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 
 export default function App() {
   return (

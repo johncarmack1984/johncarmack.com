@@ -1,4 +1,3 @@
-import useSunHidden from "@/hooks/useSunHidden";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { cva } from "class-variance-authority";
 
@@ -10,6 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import useSunHidden from "@/hooks/useSunHidden";
 
 // Heavy half of the theme toggle: the Radix dropdown (~17KB gz of popper/focus/
 // portal machinery). Lives in its own chunk, loaded on first interaction from

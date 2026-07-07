@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 
 import { ThemeProvider } from "@/components/theme-provider";
+
 import App from "@/App";
 
 // The single React tree, shared by the client entry (hydrate) and the server

@@ -1,9 +1,10 @@
 import { cva } from "class-variance-authority";
 
+import { cn } from "@/lib/utils";
+
 import day from "@/assets/img/day.avif";
 import night from "@/assets/img/night.avif";
 import useSunHidden from "@/hooks/useSunHidden";
-import { cn } from "@/lib/utils";
 
 const backgroundImageVariants = cva(
   [

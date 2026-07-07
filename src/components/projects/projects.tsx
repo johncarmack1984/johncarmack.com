@@ -1,14 +1,3 @@
-import acceptPayments from "@/assets/img/accept-payments.webp";
-import deckWindLayer from "@/assets/img/deck-wind-layer.webp";
-import deepFreeze from "@/assets/img/deep-freeze.webp";
-import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
-import lux from "@/assets/img/lux.webp";
-import manifest from "@/assets/img/manifest.webp";
-import promptward from "@/assets/img/promptward.webp";
-import stormdeck from "@/assets/img/stormdeck.webp";
-import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
-import typedGeojson from "@/assets/img/typed-geojson.webp";
-
 import AppleIcon from "@/components/ui/icons/apple";
 import AwsIcon from "@/components/ui/icons/aws";
 import AxumIcon from "@/components/ui/icons/axum";
@@ -27,9 +16,20 @@ import TauriIcon from "@/components/ui/icons/tauri";
 import TerraformIcon from "@/components/ui/icons/terraform";
 import TypeScriptIcon from "@/components/ui/icons/typescript";
 import ViteIcon from "@/components/ui/icons/vite";
-import WebGlIcon from "@/components/ui/icons/webgl";
 import WebIcon from "@/components/ui/icons/web";
+import WebGlIcon from "@/components/ui/icons/webgl";
+
 import Project, { type Tool } from "./project";
+import acceptPayments from "@/assets/img/accept-payments.webp";
+import deckWindLayer from "@/assets/img/deck-wind-layer.webp";
+import deepFreeze from "@/assets/img/deep-freeze.webp";
+import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
+import lux from "@/assets/img/lux.webp";
+import manifest from "@/assets/img/manifest.webp";
+import promptward from "@/assets/img/promptward.webp";
+import stormdeck from "@/assets/img/stormdeck.webp";
+import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
+import typedGeojson from "@/assets/img/typed-geojson.webp";
 
 // Each tool is an icon + label, defined once and reused across the cards.
 const T = {
@@ -71,7 +71,8 @@ const projects = [
   },
   {
     title: "Stormdeck",
-    description: "Live weather on a deck.gl map, served from the AWS free tier.",
+    description:
+      "Live weather on a deck.gl map, served from the AWS free tier.",
     image: stormdeck,
     href: "https://stormdeck.live",
     platforms: [P.web],
@@ -111,7 +112,16 @@ const projects = [
     image: lux,
     href: "https://github.com/johncarmack1984/lux",
     platforms: [P.macos],
-    skills: [T.rust, T.axum, T.ts, T.react, T.next, T.tailwind, T.tauri, T.terraform],
+    skills: [
+      T.rust,
+      T.axum,
+      T.ts,
+      T.react,
+      T.next,
+      T.tailwind,
+      T.tauri,
+      T.terraform,
+    ],
   },
   {
     title: "typed-geojson",

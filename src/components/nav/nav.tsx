@@ -1,5 +1,6 @@
 import ModeToggle from "@/components/theme-toggle";
 import CodeIcon from "@/components/ui/icons/code";
+
 import navLinks from "./links";
 import NavMenu from "./menu";
 import MobileNav from "./menu-mobile";

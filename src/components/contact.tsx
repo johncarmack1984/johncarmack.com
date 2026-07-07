@@ -1,6 +1,6 @@
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { IconProps } from "@radix-ui/react-icons/dist/types";
+import type { IconProps } from "@radix-ui/react-icons/dist/types";
 
 import { Button } from "@/components/ui/button";
 
