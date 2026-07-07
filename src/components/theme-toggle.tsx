@@ -1,10 +1,11 @@
-import { lazy, Suspense, useState, type ComponentProps } from "react";
-import useSunHidden from "@/hooks/useSunHidden";
+import { type ComponentProps, lazy, Suspense, useState } from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+
+import useSunHidden from "@/hooks/useSunHidden";
 
 const iconVariants = cva(
   ["absolute", "size-[1.2rem]", "transition-transform"],
@@ -35,7 +36,12 @@ function TriggerButton({
   ...props
 }: { sunHidden: boolean } & ComponentProps<typeof Button>) {
   return (
-    <Button className="bg-background/20" variant="outline" size="icon" {...props}>
+    <Button
+      className="bg-background/20"
+      variant="outline"
+      size="icon"
+      {...props}
+    >
       <SunIcon className={cn(iconVariants({ hidden: sunHidden }))} />
       <MoonIcon className={cn(iconVariants({ hidden: !sunHidden }))} />
       <span className="sr-only">Toggle theme</span>

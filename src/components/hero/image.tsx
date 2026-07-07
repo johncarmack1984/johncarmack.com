@@ -1,6 +1,6 @@
-import john from "@/assets/img/john.avif";
-
 import HeroImageBackground from "@/components/hero/image-background";
+
+import john from "@/assets/img/john.avif";
 
 function HeroImage() {
   return (

@@ -1,6 +1,6 @@
-import { type Key } from "react";
+import type { Key } from "react";
 
-import { SkillIcon } from "@/components/skills/skill";
+import type { SkillIcon } from "@/components/skills/skill";
 import {
   Card,
   CardContent,

@@ -18,6 +18,7 @@ import TerraformIcon from "@/components/ui/icons/terraform";
 import TypeScriptIcon from "@/components/ui/icons/typescript";
 import ViteIcon from "@/components/ui/icons/vite";
 import WebGlIcon from "@/components/ui/icons/webgl";
+
 import Skill from "./skill";
 
 const skills = [

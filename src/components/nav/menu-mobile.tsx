@@ -1,8 +1,5 @@
 import { lazy, Suspense, useState } from "react";
-import {
-  Root as Sheet,
-  Trigger as SheetTrigger,
-} from "@radix-ui/react-dialog";
+import { Root as Sheet, Trigger as SheetTrigger } from "@radix-ui/react-dialog";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 // The sheet panel pulls in framer-motion; defer it until the menu is first

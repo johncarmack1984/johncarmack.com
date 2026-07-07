@@ -1,4 +1,3 @@
-
 import { AnimatePresence, domAnimation, LazyMotion } from "framer-motion";
 
 import {
@@ -7,6 +6,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+
 import NavMenu from "./menu";
 
 function MobileNavPanel({ open }: { open: boolean }) {
