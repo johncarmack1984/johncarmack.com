@@ -53,7 +53,7 @@ function Project({
             }}
           />
         </a>
-        <CardTitle className="mt-4 text-base font-semibold">{title}</CardTitle>
+        <CardTitle className="mt-4 font-semibold text-base">{title}</CardTitle>
         <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5">
           {skills.map(ProjectSkill)}
         </div>

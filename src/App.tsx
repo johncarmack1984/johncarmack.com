@@ -8,7 +8,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator";
 export default function App() {
   return (
     <>
-      <div className="bg-background text-foreground relative mx-auto flex min-h-screen flex-col items-start justify-start transition-colors">
+      <div className="relative mx-auto flex min-h-screen flex-col items-start justify-start bg-background text-foreground transition-colors">
         <SiteNav />
         <div className="mx-auto flex min-h-screen flex-col">
           <main className="flex-1 overflow-y-scroll scroll-smooth">

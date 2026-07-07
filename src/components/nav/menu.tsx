@@ -6,8 +6,8 @@ import navLinks from "./links";
 const navMenuVariants = cva("ml-auto flex items-center", {
   variants: {
     variant: {
-      top: "hidden md:flex mr-4 items-center gap-1",
-      left: "flex-col gap-2 justify-start items-start",
+      top: "mr-4 hidden items-center gap-1 md:flex",
+      left: "flex-col items-start justify-start gap-2",
     },
   },
 });

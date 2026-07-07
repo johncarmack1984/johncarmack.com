@@ -3,17 +3,17 @@ import HeroImage from "@/components/hero/image";
 function HeroText() {
   return (
     <div className="grid basis-2/3 gap-4 md:gap-6">
-      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
+      <h1 className="font-bold text-3xl tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
         Hi. I'm John Carmack.
       </h1>
-      <p className="text-muted-foreground text-lg">
+      <p className="text-lg text-muted-foreground">
         I'm a software engineer focused on production LLM/AI and geospatial/GPU
         systems. Rust and TypeScript, deck.gl and luma.gl, and the cloud
         infrastructure that runs them. Lately: primary author of a
         safety-critical aviation desktop application, lone architect of a
         real-time analytics platform.
       </p>
-      <p className="text-muted-foreground text-lg">
+      <p className="text-lg text-muted-foreground">
         Not the Doom guy. Different guy.
       </p>
     </div>

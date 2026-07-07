@@ -1,6 +1,6 @@
 export function Muted({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-muted-foreground font-sans text-sm font-extrabold uppercase">
+    <p className="font-extrabold font-sans text-muted-foreground text-sm uppercase">
       {children}
     </p>
   );

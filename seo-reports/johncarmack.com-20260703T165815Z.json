@@ -1,0 +1,409 @@
+{
+  "surface": {
+    "id": "johncarmack.com",
+    "url": "https://johncarmack.com",
+    "kind": "site",
+    "gsc_property": "sc-domain:johncarmack.com",
+    "github_repo": "johncarmack1984/johncarmack.com",
+    "positioning": "AI/LLM + geospatial/GPU software engineer (deck.gl, luma.gl, Rust) building data-heavy products end to end; distinct from the id Software namesake \u2014 disambiguation is the core challenge.",
+    "seed_keywords": [
+      "john carmack geospatial",
+      "john carmack deck.gl",
+      "promptward",
+      "stormdeck",
+      "deck.gl wind layer",
+      "typed-geojson",
+      "prompt injection gateway",
+      "rust geojson library"
+    ],
+    "surface_markers": [
+      "johncarmack1984",
+      "johncarmack.com",
+      "promptward",
+      "stormdeck",
+      "deck-wind-layer",
+      "typed-geojson",
+      "geobench"
+    ],
+    "namesake_markers": [
+      "id Software",
+      "Doom",
+      "Quake",
+      "Oculus",
+      "Armadillo Aerospace",
+      "Keen Technologies"
+    ],
+    "geo_probes": [
+      "Who is John Carmack, the geospatial software engineer who works with deck.gl and Rust?",
+      "Who built promptward, the LLM gateway that blocks prompt injection?",
+      "Who made Stormdeck, the live weather map at stormdeck.live?",
+      "Who wrote deck-wind-layer, the GPU wind-particle layer for deck.gl?",
+      "Whose personal site is johncarmack.com and what do they build?"
+    ],
+    "cite_domains": []
+  },
+  "results": [
+    {
+      "provider": "crawl",
+      "tier": 0,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "final_url",
+          "value": "https://johncarmack.com",
+          "note": ""
+        },
+        {
+          "key": "status",
+          "value": 200,
+          "note": ""
+        },
+        {
+          "key": "title",
+          "value": "John Carmack - AI/LLM & Geospatial Software Engineer",
+          "note": ""
+        },
+        {
+          "key": "title_len",
+          "value": 52,
+          "note": ""
+        },
+        {
+          "key": "meta_description",
+          "value": "Software engineer focused on production LLM/AI systems and geospatial/GPU visualization: deck.gl, luma.gl, Rust. Remote, building data-heavy products end to end.",
+          "note": ""
+        },
+        {
+          "key": "canonical",
+          "value": "https://johncarmack.com/",
+          "note": ""
+        },
+        {
+          "key": "html_lang",
+          "value": "en",
+          "note": ""
+        },
+        {
+          "key": "og_tags",
+          "value": 7,
+          "note": ""
+        },
+        {
+          "key": "twitter_tags",
+          "value": 4,
+          "note": ""
+        },
+        {
+          "key": "h1_raw",
+          "value": ["John Carmack", "Hi. I'm John Carmack."],
+          "note": ""
+        },
+        {
+          "key": "raw_html_words",
+          "value": 344,
+          "note": ""
+        },
+        {
+          "key": "jsonld_types_raw",
+          "value": ["ProfilePage"],
+          "note": ""
+        },
+        {
+          "key": "rendered",
+          "value": "skipped (install 'render' extra for the JS-gap)",
+          "note": ""
+        },
+        {
+          "key": "robots_txt",
+          "value": "ok",
+          "note": ""
+        },
+        {
+          "key": "sitemap_urls",
+          "value": 1,
+          "note": ""
+        }
+      ],
+      "findings": [],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "psi",
+      "tier": 0,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "performance_score",
+          "value": 100,
+          "note": ""
+        },
+        {
+          "key": "LCP",
+          "value": "1.4\u00a0s",
+          "note": ""
+        },
+        {
+          "key": "CLS",
+          "value": "0",
+          "note": ""
+        },
+        {
+          "key": "TBT",
+          "value": "0\u00a0ms",
+          "note": ""
+        },
+        {
+          "key": "SpeedIndex",
+          "value": "1.1\u00a0s",
+          "note": ""
+        }
+      ],
+      "findings": [],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "gsc",
+      "tier": 0,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "query_count_28d",
+          "value": 23,
+          "note": ""
+        },
+        {
+          "key": "total_clicks_28d",
+          "value": 1,
+          "note": ""
+        },
+        {
+          "key": "total_impressions_28d",
+          "value": 299,
+          "note": ""
+        },
+        {
+          "key": "top_queries",
+          "value": [
+            "john carmack website (1c/7i p1)",
+            "carmack (0c/47i p12)",
+            "carmack john (0c/7i p18)",
+            "carmack's (0c/1i p15)",
+            "carmaxk (0c/1i p13)",
+            "jhon carmac (0c/1i p12)",
+            "john carma (0c/1i p13)",
+            "john carmac (0c/4i p12)",
+            "john carmack (0c/208i p13)",
+            "john carmack ai (0c/1i p25)"
+          ],
+          "note": ""
+        }
+      ],
+      "findings": [],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "github",
+      "tier": 0,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "description",
+          "value": "Personal site featuring skills, projects, and contact information.",
+          "note": ""
+        },
+        {
+          "key": "topics",
+          "value": [
+            "personal-website",
+            "portfolio",
+            "react",
+            "tailwindcss",
+            "typescript",
+            "vite"
+          ],
+          "note": ""
+        },
+        {
+          "key": "stars",
+          "value": 0,
+          "note": ""
+        },
+        {
+          "key": "homepage",
+          "value": "https://johncarmack.com",
+          "note": ""
+        },
+        {
+          "key": "views_14d",
+          "value": 1,
+          "note": ""
+        },
+        {
+          "key": "uniques_14d",
+          "value": 1,
+          "note": ""
+        }
+      ],
+      "findings": [],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "bing",
+      "tier": 0,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "rank_traffic_points",
+          "value": 5,
+          "note": ""
+        },
+        {
+          "key": "query_rows",
+          "value": 0,
+          "note": ""
+        }
+      ],
+      "findings": [],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "trends",
+      "tier": 0,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "avg_interest_12m",
+          "value": [
+            "john carmack geospatial: 1.9",
+            "john carmack deck.gl: 0.0",
+            "promptward: 0.0",
+            "stormdeck: 0.0",
+            "deck.gl wind layer: 0.0"
+          ],
+          "note": "0-100 relative"
+        }
+      ],
+      "findings": [],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "dataforseo",
+      "tier": 1,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "keyword_volumes",
+          "value": [
+            "stormdeck: 110/mo (comp=LOW, cpc=0.34)",
+            "john carmack geospatial: 0/mo (comp=None, cpc=None)",
+            "john carmack deck.gl: 0/mo (comp=None, cpc=None)",
+            "promptward: 0/mo (comp=None, cpc=None)",
+            "deck.gl wind layer: 0/mo (comp=None, cpc=None)",
+            "typed-geojson: 0/mo (comp=None, cpc=None)",
+            "prompt injection gateway: 0/mo (comp=None, cpc=None)",
+            "rust geojson library: 0/mo (comp=None, cpc=None)"
+          ],
+          "note": ""
+        },
+        {
+          "key": "api_cost_usd",
+          "value": 0.09,
+          "note": ""
+        }
+      ],
+      "findings": [
+        {
+          "severity": "low",
+          "code": "dataforseo.zero_volume",
+          "message": "7 seed terms show ~0 volume: john carmack geospatial, john carmack deck.gl, promptward, deck.gl wind layer, typed-geojson, prompt injection gateway, rust geojson library"
+        }
+      ],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "serper",
+      "tier": 1,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "serp_positions",
+          "value": [
+            "john carmack geospatial: #1",
+            "john carmack deck.gl: #1",
+            "promptward: not in top 9",
+            "stormdeck: not in top 9",
+            "deck.gl wind layer: not in top 9",
+            "typed-geojson: not in top 9",
+            "prompt injection gateway: not in top 10",
+            "rust geojson library: not in top 9"
+          ],
+          "note": ""
+        }
+      ],
+      "findings": [],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    },
+    {
+      "provider": "geo_probe",
+      "tier": 2,
+      "status": "ok",
+      "signals": [
+        {
+          "key": "perplexity",
+          "value": "surfaced 4/5, conflated 1, cited 2",
+          "note": "[Who is John Carmack, the geospatia...] CONFLATED; [Who built promptward, the LLM gate...] surfaced; [Who made Stormdeck, the live weath...] surfaced; [Who wrote deck-wind-layer, the GPU...] surfaced; [Whose personal site is johncarmack...] surfaced"
+        },
+        {
+          "key": "openai",
+          "value": "surfaced 4/5, conflated 1, cited 0",
+          "note": "[Who is John Carmack, the geospatia...] CONFLATED; [Who built promptward, the LLM gate...] surfaced; [Who made Stormdeck, the live weath...] surfaced; [Who wrote deck-wind-layer, the GPU...] surfaced; [Whose personal site is johncarmack...] surfaced"
+        },
+        {
+          "key": "anthropic",
+          "value": "surfaced 4/5, conflated 1, cited 0",
+          "note": "[Who is John Carmack, the geospatia...] CONFLATED; [Who built promptward, the LLM gate...] surfaced; [Who made Stormdeck, the live weath...] surfaced; [Who wrote deck-wind-layer, the GPU...] surfaced; [Whose personal site is johncarmack...] surfaced"
+        },
+        {
+          "key": "gemini",
+          "value": "surfaced 3/5, conflated 2, cited 0",
+          "note": "[Who is John Carmack, the geospatia...] CONFLATED; [Who built promptward, the LLM gate...] surfaced; [Who made Stormdeck, the live weath...] surfaced; [Who wrote deck-wind-layer, the GPU...] surfaced; [Whose personal site is johncarmack...] CONFLATED"
+        }
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "code": "geo.conflation",
+          "message": "answer engines conflated the surface with a namesake on 5 probe(s) - the disambiguation gap is real."
+        }
+      ],
+      "error": null,
+      "stub_adds": null,
+      "stub_env": [],
+      "stub_contract": null
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export function H1({
     <h1
       className={cn(
         className,
-        "scroll-m-20 font-serif text-4xl font-medium lg:text-5xl",
+        "scroll-m-20 font-medium font-serif text-4xl lg:text-5xl",
       )}
     >
       {children}

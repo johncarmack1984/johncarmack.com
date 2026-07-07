@@ -8,7 +8,7 @@ export function Small({
   children?: React.ReactNode;
 }) {
   return (
-    <small className={cn("text-xs font-medium leading-none", className)}>
+    <small className={cn("font-medium text-xs leading-none", className)}>
       {children}
     </small>
   );

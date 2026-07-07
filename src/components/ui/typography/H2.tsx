@@ -11,7 +11,7 @@ export function H2({
     <h2
       className={cn(
         className,
-        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0",
+        "scroll-m-20 border-b pb-2 font-semibold text-3xl tracking-tight transition-colors first:mt-0",
       )}
     >
       {children}
