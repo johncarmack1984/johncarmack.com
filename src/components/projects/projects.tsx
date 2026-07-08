@@ -8,6 +8,7 @@ import DeckGlIcon from "@/components/ui/icons/deckgl";
 import LumaGlIcon from "@/components/ui/icons/lumagl";
 import MapLibreIcon from "@/components/ui/icons/maplibre";
 import NextJsIcon from "@/components/ui/icons/nextjs";
+import PythonIcon from "@/components/ui/icons/python";
 import ReactIcon from "@/components/ui/icons/react";
 import Rust from "@/components/ui/icons/rust";
 import StripeIcon from "@/components/ui/icons/stripe";
@@ -27,6 +28,7 @@ import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
 import lux from "@/assets/img/lux.webp";
 import manifest from "@/assets/img/manifest.webp";
 import promptward from "@/assets/img/promptward.webp";
+import seoKit from "@/assets/img/seo-kit.webp";
 import stormdeck from "@/assets/img/stormdeck.webp";
 import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
 import typedGeojson from "@/assets/img/typed-geojson.webp";
@@ -49,6 +51,7 @@ const T = {
   stripe: { Icon: StripeIcon, name: "Stripe" },
   tauri: { Icon: TauriIcon, name: "Tauri" },
   terraform: { Icon: TerraformIcon, name: "Terraform" },
+  python: { Icon: PythonIcon, name: "Python" },
 } satisfies Record<string, Tool>;
 
 // Where the project runs (shown in the card footer).
@@ -60,6 +63,15 @@ const P = {
 } satisfies Record<string, Tool>;
 
 const projects = [
+  {
+    title: "seo-kit",
+    description:
+      "Real-data SEO + GEO audits: does Google rank you, do LLMs cite you.",
+    image: seoKit,
+    href: "https://seo-kit.johncarmack.com",
+    platforms: [P.cli],
+    skills: [T.python, T.aws, T.terraform],
+  },
   {
     title: "promptward",
     description:
