@@ -1,0 +1,103 @@
+name: self-audit
+
+# Daily seo-kit audit of the live site — the same loop seo-kit runs on itself:
+# daily, after every successful deploy, and on demand. The fresh report lands in
+# the site bucket's audits/ prefix — not in git (committed seo-reports/ stay
+# hand-curated milestones) — then the trend SVG is regenerated from the full
+# history (S3 runs + committed milestones) and pushed to the bucket with an
+# invalidation. Providers join the run as their keys appear in Actions secrets;
+# an absent key is a clean skip, so the audit deepens as secrets are added.
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 09:53 UTC, offset from seo-kit's own 09:23 self-audit so the two runs
+    # never burst the shared provider keys at the same minute.
+    - cron: "53 9 * * *"
+  workflow_run:
+    workflows: [deploy]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency: self-audit
+
+jobs:
+  audit:
+    # For workflow_run, only chase a successful deploy of main.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      # The audit tool itself. Its checkout doubles as the seo-kit "tool home"
+      # (machine-level provider enablement below lives there), while target
+      # resolution keeps finding this repo's seo-kit.toml because the commands
+      # run from the repo root. Tracks seo-kit main by design — same policy as
+      # the plugin-marketplace install.
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          repository: johncarmack1984/seo-kit
+          path: seo-kit
+      - uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
+      - run: uv sync --project seo-kit
+      - uses: aws-actions/configure-aws-credentials@254c19bd240aabef8777f48595e9d2d7b972184b # v6.2.1
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Pull audit history (S3 runs + committed milestones)
+        env:
+          BUCKET: johncarmack-com-site # fixed name; see infra/variables.tf
+        run: |
+          mkdir -p ci-history
+          aws s3 sync "s3://$BUCKET/audits/" ci-history/ --exclude "*" --include "*.json"
+          cp -f seo-reports/*.json ci-history/ 2>/dev/null || true
+      # A fresh tool checkout has no config.toml, so seo-kit's built-in defaults
+      # apply and the paid tiers stay off (--only filters WITHIN enabled
+      # providers). The runner is a machine; this is its machine-level config.
+      # dataforseo (per-call cost, slow-moving market data) stays off in CI.
+      - name: Enable CI provider tiers
+        run: printf '[providers]\nserper = true\ngeo_probe = true\n' > seo-kit/config.toml
+      - name: Audit the live site
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
+          PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        # TRIPWIRE: everything under audits/ is served publicly through the
+        # site's CloudFront distribution. Keep gsc OUT of this slice — Search
+        # Console query data would go world-readable. GSC belongs in local,
+        # hand-curated audits.
+        run: uv run --project seo-kit seo-kit audit johncarmack.com --only crawl,psi,bing,github,serper,geo_probe
+      - name: Publish report + regenerated trend to the bucket
+        env:
+          BUCKET: johncarmack-com-site
+        run: |
+          new=$(ls -t seo-reports/johncarmack.com-*.json | head -1)
+          cp -f "$new" ci-history/
+          uv run --project seo-kit seo-kit trend johncarmack.com --reports-dir ci-history --out trend-johncarmack-com.svg
+          aws s3 cp "$new" "s3://$BUCKET/audits/$(basename "$new")"
+          # Stable names so the latest report and graph are fetchable through
+          # CloudFront without knowing a timestamp. Everything CI-owned lives
+          # under audits/, which the deploy sync's --delete explicitly skips.
+          aws s3 cp "$new" "s3://$BUCKET/audits/latest.json" \
+            --cache-control "public, max-age=900" --content-type application/json
+          aws s3 cp trend-johncarmack-com.svg "s3://$BUCKET/audits/trend-johncarmack-com.svg" \
+            --cache-control "public, max-age=3600" --content-type image/svg+xml
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ vars.DISTRIBUTION_ID }} --paths "/audits/latest.json" "/audits/trend-johncarmack-com.svg"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: seo-report
+          path: seo-reports/
