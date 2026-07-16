@@ -11,6 +11,7 @@ import NextJsIcon from "@/components/ui/icons/nextjs";
 import PythonIcon from "@/components/ui/icons/python";
 import ReactIcon from "@/components/ui/icons/react";
 import Rust from "@/components/ui/icons/rust";
+import SmartphoneIcon from "@/components/ui/icons/smartphone";
 import StripeIcon from "@/components/ui/icons/stripe";
 import TailwindIcon from "@/components/ui/icons/tailwind";
 import TauriIcon from "@/components/ui/icons/tauri";
@@ -32,6 +33,7 @@ import seoKit from "@/assets/img/seo-kit.webp";
 import stormdeck from "@/assets/img/stormdeck.webp";
 import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
 import typedGeojson from "@/assets/img/typed-geojson.webp";
+import vegify from "@/assets/img/vegify.webp";
 
 // Each tool is an icon + label, defined once and reused across the cards.
 const T = {
@@ -58,6 +60,7 @@ const T = {
 const P = {
   web: { Icon: WebIcon, name: "Web" },
   macos: { Icon: AppleIcon, name: "macOS" },
+  ios: { Icon: SmartphoneIcon, name: "iOS" },
   cli: { Icon: CommandPromptIcon, name: "CLI" },
   library: { Icon: CodeIcon, name: "Library" },
 } satisfies Record<string, Tool>;
@@ -123,7 +126,8 @@ const projects = [
     description: "A light controller for USB DMX devices.",
     image: lux,
     href: "https://github.com/johncarmack1984/lux",
-    platforms: [P.macos],
+    appStore: "https://apps.apple.com/us/app/lux-for-dmx/id6788795353",
+    platforms: [P.macos, P.ios],
     skills: [
       T.rust,
       T.axum,
@@ -134,6 +138,16 @@ const projects = [
       T.tauri,
       T.terraform,
     ],
+  },
+  {
+    title: "vegify.app",
+    description:
+      "Micronutrition tracking & recipe sharing for plant-based cooking.",
+    image: vegify,
+    href: "https://github.com/vegify/vegify.app",
+    appStore: "https://apps.apple.com/us/app/vegify-app/id6787673614",
+    platforms: [P.web, P.ios],
+    skills: [T.rust, T.axum, T.ts, T.react, T.tailwind, T.vite, T.tauri],
   },
   {
     title: "typed-geojson",
