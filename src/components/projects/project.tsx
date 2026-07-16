@@ -10,6 +10,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+import appStoreBadge from "@/assets/app-store-badge.svg";
+
 export type Tool = { Icon: SkillIcon; name: string };
 
 function ProjectSkill({ Icon, name }: Tool, key: Key) {
@@ -26,6 +28,7 @@ type ProjectProps = {
   description: string;
   image: string;
   href: string;
+  appStore?: string;
   platforms: Tool[];
   skills: Tool[];
 };
@@ -35,6 +38,7 @@ function Project({
   description,
   image,
   href,
+  appStore,
   platforms,
   skills,
 }: ProjectProps) {
@@ -60,10 +64,24 @@ function Project({
       </CardHeader>
       <CardContent className="text-sm">{description}</CardContent>
 
-      <CardFooter className="flex gap-2">
+      <CardFooter className="flex items-center gap-2">
         <CardDescription className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
           {platforms.map(ProjectSkill)}
         </CardDescription>
+        {appStore && (
+          <a
+            aria-label={`${title} on the App Store`}
+            className="ml-auto shrink-0"
+            href={appStore}
+          >
+            <img
+              alt="Download on the App Store"
+              loading="lazy"
+              className="h-10 w-auto"
+              src={appStoreBadge}
+            />
+          </a>
+        )}
       </CardFooter>
     </Card>
   );
