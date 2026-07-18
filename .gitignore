@@ -39,3 +39,5 @@ next-env.d.ts
 .dev
 
 certificates
+# local seo-kit audit output
+/seo-reports/
