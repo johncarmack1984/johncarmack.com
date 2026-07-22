@@ -26,10 +26,12 @@ import acceptPayments from "@/assets/img/accept-payments.webp";
 import deckWindLayer from "@/assets/img/deck-wind-layer.webp";
 import deepFreeze from "@/assets/img/deep-freeze.webp";
 import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
+import glslint from "@/assets/img/glslint.webp";
 import lux from "@/assets/img/lux.webp";
 import manifest from "@/assets/img/manifest.webp";
 import promptward from "@/assets/img/promptward.webp";
 import seoKit from "@/assets/img/seo-kit.webp";
+import sheaf from "@/assets/img/sheaf.webp";
 import stormdeck from "@/assets/img/stormdeck.webp";
 import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
 import typedGeojson from "@/assets/img/typed-geojson.webp";
@@ -66,6 +68,17 @@ const P = {
 } satisfies Record<string, Tool>;
 
 const projects = [
+  // Sheaf: prepped for launch. Delete `hidden: true` to flip it live.
+  {
+    title: "Sheaf",
+    description:
+      "Export an iMessage conversation to a keepsake PDF, all on your Mac.",
+    image: sheaf,
+    href: "https://github.com/johncarmack1984/message-to-pdf",
+    platforms: [P.macos],
+    skills: [T.rust, T.tauri, T.ts],
+    hidden: true,
+  },
   {
     title: "seo-kit",
     description:
@@ -114,6 +127,15 @@ const projects = [
     skills: [T.ts, T.deckgl, T.webgl, T.lumagl, T.vite],
   },
   {
+    title: "glslint",
+    description:
+      "A GLSL checker for the deck.gl and luma.gl shaders stock tools can't parse.",
+    image: glslint,
+    href: "https://github.com/johncarmack1984/glslint",
+    platforms: [P.cli, P.library],
+    skills: [T.rust, T.ts, T.deckgl, T.lumagl],
+  },
+  {
     title: "geo-desktop-bench",
     description: "Finding the fastest geospatial desktop stack.",
     image: geoDesktopBench,
@@ -123,21 +145,13 @@ const projects = [
   },
   {
     title: "Lux",
-    description: "A light controller for USB DMX devices.",
+    description:
+      "A DMX lighting controller: multi-fixture engine, sACN streaming, cloud sync.",
     image: lux,
     href: "https://github.com/johncarmack1984/lux",
     appStore: "https://apps.apple.com/us/app/lux-for-dmx/id6788795353",
     platforms: [P.macos, P.ios],
-    skills: [
-      T.rust,
-      T.axum,
-      T.ts,
-      T.react,
-      T.next,
-      T.tailwind,
-      T.tauri,
-      T.terraform,
-    ],
+    skills: [T.rust, T.axum, T.ts, T.react, T.tailwind, T.tauri, T.terraform],
   },
   {
     title: "vegify.app",
@@ -199,7 +213,7 @@ export default function Projects() {
           Projects
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map(Project)}
+          {projects.filter((project) => !project.hidden).map(Project)}
         </div>
       </div>
     </section>

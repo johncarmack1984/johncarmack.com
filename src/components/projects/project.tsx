@@ -31,6 +31,8 @@ type ProjectProps = {
   appStore?: string;
   platforms: Tool[];
   skills: Tool[];
+  // Prepped but not yet shown; filtered out before render (see projects.tsx).
+  hidden?: boolean;
 };
 
 function Project({
