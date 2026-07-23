@@ -1,24 +1,14 @@
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-type Pr = { n: number; state: "merged" | "open" };
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Contribution = {
   project: string;
   repo: string;
-  // Live GitHub search of my merged PRs on this repo -- the receipts.
+  // Live GitHub search of my merged PRs on this repo -- evergreen receipts, no
+  // counts to go stale.
   mergedUrl: string;
-  merged: number;
-  open?: number;
   summary: string;
-  prs: Pr[];
 };
 
 const search = (repo: string) =>
@@ -29,117 +19,49 @@ const contributions: Contribution[] = [
     project: "specta",
     repo: "specta-rs/specta",
     mergedUrl: search("specta-rs/specta"),
-    merged: 14,
     summary:
-      "14 PRs merged toward 2.0: the OpenAPI paths layer, OAS 3.1 by default, and a bigint remapper the maintainer now uses in his own serde_json tests.",
-    prs: [
-      { n: 562, state: "merged" },
-      { n: 560, state: "merged" },
-      { n: 548, state: "merged" },
-      { n: 547, state: "merged" },
-      { n: 546, state: "merged" },
-      { n: 508, state: "merged" },
-    ],
+      "Merged work toward 2.0: the OpenAPI paths layer, OAS 3.1 by default, and a bigint remapper the maintainer now uses in his own serde_json tests.",
   },
   {
     project: "covector",
     repo: "jbolda/covector",
     mergedUrl: search("jbolda/covector"),
-    merged: 1,
-    open: 1,
     summary:
-      "Cargo workspace-dependency support, merged. A follow-up on workspace-root version bumps is in review.",
-    prs: [
-      { n: 397, state: "merged" },
-      { n: 400, state: "open" },
-    ],
+      "Cargo workspace-dependency support, plus follow-on work on workspace-root version bumps.",
   },
   {
     project: "biome",
     repo: "biomejs/biome",
     mergedUrl: search("biomejs/biome"),
-    merged: 2,
-    open: 1,
     summary:
-      "Sharpened the useSortedClasses lint rule for Tailwind class order. A follow-up ordering same-utility values is open.",
-    prs: [
-      { n: 10880, state: "merged" },
-      { n: 10872, state: "merged" },
-      { n: 11016, state: "open" },
-    ],
+      "Sharpening the useSortedClasses lint rule for Tailwind class order, including how same-utility values sort.",
   },
   {
     project: "koed",
     repo: "koed-labs/koed",
     mergedUrl: search("koed-labs/koed"),
-    merged: 2,
     summary:
-      "A macOS test-reliability fix and a Claude Code integration guide, both merged.",
-    prs: [
-      { n: 313, state: "merged" },
-      { n: 314, state: "merged" },
-    ],
+      "A macOS test-reliability fix and a Claude Code integration guide.",
   },
 ];
 
-function CountBadge({ merged, open }: { merged: number; open?: number }) {
+function ContributionCard({ project, repo, mergedUrl, summary }: Contribution) {
   return (
-    <span className="shrink-0 text-muted-foreground text-xs">
-      {merged} merged
-      {open ? ` · ${open} open` : ""}
-    </span>
-  );
-}
-
-function PrChip({ repo, pr }: { repo: string; pr: Pr }) {
-  const merged = pr.state === "merged";
-  return (
-    <a
-      key={pr.n}
-      aria-label={`${repo} pull request #${pr.n} (${pr.state})`}
-      className={
-        merged
-          ? "rounded-md border px-2 py-0.5 font-mono text-foreground text-xs transition-colors hover:border-primary hover:text-primary"
-          : "rounded-md border border-dashed px-2 py-0.5 font-mono text-muted-foreground text-xs transition-colors hover:text-foreground"
-      }
-      href={`https://github.com/${repo}/pull/${pr.n}`}
-    >
-      #{pr.n}
-      {merged ? "" : " open"}
-    </a>
-  );
-}
-
-function ContributionCard(c: Contribution) {
-  return (
-    <Card key={c.repo} className="rounded-md">
+    <Card key={repo} className="rounded-md">
       <CardHeader>
-        <div className="flex items-baseline justify-between gap-3">
-          <a
-            aria-label={`My merged pull requests on ${c.repo}`}
-            href={c.mergedUrl}
-          >
-            <CardTitle className="font-semibold text-base">
-              {c.project}
-            </CardTitle>
-          </a>
-          <CountBadge merged={c.merged} open={c.open} />
-        </div>
+        <a aria-label={`My merged pull requests on ${repo}`} href={mergedUrl}>
+          <CardTitle className="font-semibold text-base">{project}</CardTitle>
+        </a>
         <a
-          aria-label={`${c.repo} on GitHub`}
+          aria-label={`${repo} on GitHub`}
           className="inline-flex w-fit items-center gap-1.5 text-muted-foreground text-xs transition-colors hover:text-foreground"
-          href={`https://github.com/${c.repo}`}
+          href={`https://github.com/${repo}`}
         >
           <GitHubLogoIcon className="size-3.5" />
-          {c.repo}
+          {repo}
         </a>
       </CardHeader>
-      <CardContent className="text-sm">{c.summary}</CardContent>
-      <CardFooter className="flex flex-wrap gap-2">
-        {c.prs.map((pr) => (
-          <PrChip key={pr.n} pr={pr} repo={c.repo} />
-        ))}
-      </CardFooter>
+      <CardContent className="text-sm">{summary}</CardContent>
     </Card>
   );
 }
@@ -152,7 +74,8 @@ export default function OpenSource() {
           Open source
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-          Merged into other people's codebases. Every link goes to the PR.
+          Merged into other people's codebases. Each title links to the pull
+          requests on GitHub.
         </p>
         <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
           {contributions.map(ContributionCard)}
