@@ -1,7 +1,6 @@
 import Contact from "@/components/contact";
 import Hero from "@/components/hero/hero";
 import SiteNav from "@/components/nav/nav";
-import Now from "@/components/now/now";
 import OpenSource from "@/components/opensource/opensource";
 import Projects from "@/components/projects/projects";
 import Skills from "@/components/skills/skills";
@@ -15,7 +14,6 @@ export default function App() {
         <div className="mx-auto flex min-h-screen flex-col">
           <main className="flex-1 overflow-y-scroll scroll-smooth">
             <Hero />
-            <Now />
             <Skills />
             <Projects />
             <OpenSource />
