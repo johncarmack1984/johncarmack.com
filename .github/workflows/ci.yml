@@ -27,6 +27,8 @@ jobs:
         run: bun run lint
       - name: Typecheck
         run: bun run typecheck
+      - name: Unused dependencies (knip)
+        run: bunx knip --dependencies
       - name: Build
         run: bun run build
 
