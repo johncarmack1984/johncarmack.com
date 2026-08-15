@@ -16,6 +16,27 @@ const search = (repo: string) =>
 
 const contributions: Contribution[] = [
   {
+    project: "maplibre-gl-js",
+    repo: "maplibre/maplibre-gl-js",
+    mergedUrl: search("maplibre/maplibre-gl-js"),
+    summary:
+      "Rebuilt the benchmark suite from scratch, resolving a two-year-old open issue, then landed all three Phase 1 graphics modernization milestones — integer vertex attributes, bitwise unpacking, and texelFetch for elevation.",
+  },
+  {
+    project: "martin",
+    repo: "maplibre/martin",
+    mergedUrl: search("maplibre/martin"),
+    summary:
+      "Test harness modernization — splitting monolithic e2e tests into focused Rust modules, plus mbtiles and Postgres source discovery ports.",
+  },
+  {
+    project: "maplibre-native-rs",
+    repo: "maplibre/maplibre-native-rs",
+    mergedUrl: search("maplibre/maplibre-native-rs"),
+    summary:
+      "Added AddressSanitizer and LeakSanitizer CI, and fixed the ambient cache to respect the configured maximum size.",
+  },
+  {
     project: "specta",
     repo: "specta-rs/specta",
     mergedUrl: search("specta-rs/specta"),
@@ -23,25 +44,11 @@ const contributions: Contribution[] = [
       "Merged work toward 2.0: the OpenAPI paths layer, OAS 3.1 by default, and a bigint remapper the maintainer now uses in his own serde_json tests.",
   },
   {
-    project: "covector",
-    repo: "jbolda/covector",
-    mergedUrl: search("jbolda/covector"),
-    summary:
-      "Cargo workspace-dependency support, plus follow-on work on workspace-root version bumps.",
-  },
-  {
     project: "biome",
     repo: "biomejs/biome",
     mergedUrl: search("biomejs/biome"),
     summary:
       "Sharpening the useSortedClasses lint rule for Tailwind class order, including how same-utility values sort.",
-  },
-  {
-    project: "koed",
-    repo: "koed-labs/koed",
-    mergedUrl: search("koed-labs/koed"),
-    summary:
-      "A macOS test-reliability fix and a Claude Code integration guide.",
   },
 ];
 
