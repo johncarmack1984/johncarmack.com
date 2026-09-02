@@ -115,7 +115,7 @@ export function structuredData(buildDate: string) {
         sameAs: [
           "https://github.com/johncarmack1984",
           "https://www.linkedin.com/in/johncarmack1984",
-          "https://x.com/johnmcarmack",
+          "https://x.com/johncarmack",
           "https://crates.io/users/johncarmack1984",
         ],
       },
