@@ -9,7 +9,10 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!public"]
+    // infra/*.js are Terraform templatefile() inputs for CloudFront Functions,
+    // not project code: they carry ${var} placeholders and must avoid template
+    // literals, which the style rules would fight.
+    "includes": ["**", "!public", "!infra/*.js"]
   },
   "formatter": {
     "enabled": true,

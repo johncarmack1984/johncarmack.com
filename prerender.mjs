@@ -16,21 +16,60 @@ import { resolve } from "node:path";
 const root = process.cwd();
 const indexPath = resolve(root, "dist/index.html");
 
-const { render } = await import(resolve(root, "dist-server/entry-server.js"));
+const { render, structuredData } = await import(
+  resolve(root, "dist-server/entry-server.js")
+);
 const appHtml = render();
 
+// One build date for everything that carries one: the ProfilePage dateModified
+// and the sitemap lastmod. Every deploy changes the rendered page, so this is
+// honest, and it stops the hand-maintained sitemap date from going stale.
+const buildDate = new Date().toISOString().slice(0, 10);
+
+// JSON-LD lives in a <script>, so escape "<" to keep "</script>" and "<!--"
+// out of the payload.
+const jsonLd = JSON.stringify(structuredData(buildDate)).replace(
+  /</g,
+  "\\u003c",
+);
+
 const template = readFileSync(indexPath, "utf-8");
-const marker = '<div id="root"></div>';
-if (!template.includes(marker)) {
-  throw new Error(
-    `prerender: expected ${marker} in dist/index.html (did the build output change?)`,
-  );
+const rootMarker = '<div id="root"></div>';
+const dataMarker = "<!--structured-data-->";
+for (const marker of [rootMarker, dataMarker]) {
+  if (!template.includes(marker)) {
+    throw new Error(
+      `prerender: expected ${marker} in dist/index.html (did the build output change?)`,
+    );
+  }
 }
 
 writeFileSync(
   indexPath,
-  template.replace(marker, `<div id="root">${appHtml}</div>`),
+  template
+    .replace(rootMarker, `<div id="root">${appHtml}</div>`)
+    .replace(
+      dataMarker,
+      `<script type="application/ld+json">${jsonLd}</script>`,
+    ),
 );
 console.log(
-  `prerender: injected ${appHtml.length} chars of HTML into dist/index.html`,
+  `prerender: injected ${appHtml.length} chars of HTML and ${jsonLd.length} chars of JSON-LD into dist/index.html`,
 );
+
+// The site is one URL; the sitemap only needs <loc> + a truthful <lastmod>.
+// (changefreq/priority are ignored by Google, so they are gone.)
+writeFileSync(
+  resolve(root, "dist/sitemap.xml"),
+  [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    "  <url>",
+    "    <loc>https://johncarmack.com/</loc>",
+    `    <lastmod>${buildDate}</lastmod>`,
+    "  </url>",
+    "</urlset>",
+    "",
+  ].join("\n"),
+);
+console.log(`prerender: wrote dist/sitemap.xml (lastmod ${buildDate})`);

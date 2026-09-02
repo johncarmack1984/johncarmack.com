@@ -28,7 +28,7 @@ function ContactLink({ Icon, href }: { Icon: IconType; href: string }) {
       className="block w-fit pl-0 text-lg"
       asChild
     >
-      <a href={href}>
+      <a href={href} rel="me">
         <Icon className="inline" /> {displayHref}
       </a>
     </Button>
