@@ -53,7 +53,8 @@ function HeroImageBackground() {
           backgroundImageVariants({ variant: "light", hidden: sunHidden }),
         )}
         src={day}
-        alt="Day Theme Backdrop"
+        alt=""
+        aria-hidden="true"
         width={1005}
         height={902}
         loading="lazy"
@@ -64,7 +65,8 @@ function HeroImageBackground() {
           backgroundImageVariants({ variant: "dark", hidden: !sunHidden }),
         )}
         src={night}
-        alt="Night Theme Backdrop"
+        alt=""
+        aria-hidden="true"
         width={1005}
         height={902}
         loading="lazy"

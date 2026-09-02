@@ -7,11 +7,7 @@
     <title>John Carmack - AI/LLM & Geospatial Software Engineer</title>
     <meta
       name="description"
-      content="Software engineer building production LLM/AI systems and geospatial/GPU visualization with deck.gl, luma.gl, and Rust."
-    />
-    <meta
-      name="keywords"
-      content="John Carmack, johncarmack1984, AI engineer, LLM engineer, production LLM, AI systems, geospatial engineer, deck.gl, luma.gl, GPU, WebGL, Rust, TypeScript, MapLibre, Tauri, AWS"
+      content="Not the Doom guy. Different guy: software engineer building production LLM/AI systems and geospatial/GPU visualization with deck.gl, luma.gl, and Rust."
     />
     <meta name="author" content="John Carmack" />
     <meta
@@ -35,12 +31,12 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://johncarmack.com" />
-    <meta property="og:site_name" content="John Carmack - AI/LLM & Geospatial Software Engineer" />
+    <meta property="og:url" content="https://johncarmack.com/" />
+    <meta property="og:site_name" content="John Carmack" />
     <meta property="og:title" content="John Carmack - AI/LLM & Geospatial Software Engineer" />
     <meta
       property="og:description"
-      content="Software engineer building production LLM/AI systems and geospatial/GPU visualization with deck.gl, luma.gl, and Rust."
+      content="Not the Doom guy. Different guy: software engineer building production LLM/AI systems and geospatial/GPU visualization with deck.gl, luma.gl, and Rust."
     />
     <meta property="og:image" content="https://johncarmack.com/opengraph-image.png" />
     <meta property="og:image:width" content="1280" />
@@ -54,33 +50,18 @@
     <meta name="twitter:title" content="John Carmack - AI/LLM & Geospatial Software Engineer" />
     <meta
       name="twitter:description"
-      content="Software engineer building production LLM/AI systems and geospatial/GPU visualization with deck.gl, luma.gl, and Rust."
+      content="Not the Doom guy. Different guy: software engineer building production LLM/AI systems and geospatial/GPU visualization with deck.gl, luma.gl, and Rust."
     />
     <meta name="twitter:image" content="https://johncarmack.com/opengraph-image.png" />
     <meta name="twitter:image:alt" content="John Carmack - AI/LLM & Geospatial Software Engineer" />
 
     <link rel="canonical" href="https://johncarmack.com/" />
 
-    <!-- Person / ProfilePage entity: gives Google + LLM answer engines a clean
-         "who is this" and disambiguates from the id Software / Oculus namesake.
-         Static here so crawlers and non-JS LLM bots see it without prerendering. -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfilePage",
-        "mainEntity": {
-          "@type": "Person",
-          "name": "John Carmack",
-          "alternateName": "johncarmack1984",
-          "url": "https://johncarmack.com/",
-          "jobTitle": "AI/LLM & Geospatial Software Engineer",
-          "description": "Software engineer focused on production LLM/AI systems and geospatial/GPU data visualization with deck.gl, luma.gl, and Rust.",
-          "disambiguatingDescription": "A software engineer (GitHub: johncarmack1984) focused on AI/LLM and geospatial/GPU engineering. Not the id Software / Oculus founder of the same name.",
-          "knowsAbout": ["Large language models", "Production AI systems", "Retrieval-augmented generation", "Geospatial data visualization", "deck.gl", "luma.gl", "GPU rendering", "WebGL", "Aviation software", "Electronic flight bag (EFB)", "Flight planning systems", "Safety-critical systems", "Rust", "TypeScript"],
-          "sameAs": ["https://github.com/johncarmack1984", "https://www.linkedin.com/in/johncarmack1984"]
-        }
-      }
-    </script>
+    <!-- Structured data (WebSite + ProfilePage + Person + the project list as
+         SoftwareSourceCode/SoftwareApplication nodes) is generated at build time
+         by prerender.mjs from src/lib/structured-data.ts, so it never drifts from
+         the rendered cards. The marker below is replaced in dist/index.html. -->
+    <!--structured-data-->
 
     <!-- Self-hosted Inter Variable (see @font-face in globals.css). Deliberately
          not preloaded: font-display:optional already guarantees no swap/shift, so

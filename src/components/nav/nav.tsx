@@ -13,7 +13,7 @@ function HomeLink() {
       className="hidden items-center md:block"
     >
       <CodeIcon className="h-6 w-6" />
-      <h1 className="sr-only">John Carmack</h1>
+      <span className="sr-only">John Carmack</span>
     </a>
   );
 }

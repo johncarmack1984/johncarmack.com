@@ -81,6 +81,8 @@ function Project({
               loading="lazy"
               className="h-10 w-auto"
               src={appStoreBadge}
+              width={120}
+              height={40}
             />
           </a>
         )}

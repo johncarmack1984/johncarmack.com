@@ -9,7 +9,7 @@ function HeroImage() {
       <img
         className="relative z-20 aspect-[1005/902] h-auto w-full"
         src={john}
-        alt="John Carmack"
+        alt="John Carmack, software engineer"
         width={1005}
         height={902}
         fetchPriority="high"

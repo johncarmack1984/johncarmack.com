@@ -1,15 +1,29 @@
 @import "tailwindcss";
 
 /* Self-hosted Inter Variable (latin, weight axis), replacing the render-blocking
-   Google Fonts request. Paired with a same-origin preload in index.html, the font
-   is ready before first paint, so font-display:optional applies it with no swap
-   and therefore no layout shift. */
+   Google Fonts request. Deliberately not preloaded (see index.html): with
+   font-display:optional the font is used only if it lands inside the short block
+   window, otherwise the fallback stays for the life of the page. The file is
+   imported through Vite so it ships content-hashed under assets/ and gets the
+   immutable cache policy. */
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 100 900;
   font-display: optional;
-  src: url("/fonts/inter-variable.woff2") format("woff2");
+  src: url("./assets/fonts/inter-variable.woff2") format("woff2");
+}
+
+/* Metric-matched local fallback: when Inter does land inside the block window,
+   the swap from this face reflows nothing, so the intermittent hero-text layout
+   shift goes away. Overrides are the Inter-over-Arial values next/font emits. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+  size-adjust: 107.4%;
 }
 
 :root {
@@ -89,7 +103,9 @@
 }
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans:
+    "Inter", "Inter Fallback", ui-sans-serif, system-ui, -apple-system,
+    sans-serif;
 
   --color-background: var(--theme-color-background);
   --color-foreground: var(--theme-color-foreground);

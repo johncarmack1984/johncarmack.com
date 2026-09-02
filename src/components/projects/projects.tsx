@@ -78,7 +78,9 @@ const groupOrder = [
 
 type Group = (typeof groupOrder)[number];
 
-const projects = [
+// Exported for src/lib/structured-data.ts, which turns the visible cards into
+// schema.org nodes at build time.
+export const projects = [
   // Sheaf: prepped for launch. Delete `hidden: true` to flip it live.
   {
     title: "Sheaf",

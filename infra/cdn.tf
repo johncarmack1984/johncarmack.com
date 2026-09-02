@@ -7,6 +7,22 @@ data "aws_cloudfront_cache_policy" "optimized" {
   name = "Managed-CachingOptimized"
 }
 
+# HSTS, nosniff, frame-options, referrer-policy: the AWS-managed set, attached
+# to every response.
+data "aws_cloudfront_response_headers_policy" "security" {
+  name = "Managed-SecurityHeadersPolicy"
+}
+
+# Viewer-request function: 301 www.<domain> to the apex so search engines see a
+# single canonical host (both hosts used to serve byte-identical 200s).
+resource "aws_cloudfront_function" "www_redirect" {
+  name    = "${replace(var.domain_name, ".", "-")}-www-redirect"
+  runtime = "cloudfront-js-2.0"
+  comment = "301 www.${var.domain_name} to ${var.domain_name}"
+  publish = true
+  code    = templatefile("${path.module}/www-redirect.js", { domain = var.domain_name })
+}
+
 resource "aws_cloudfront_origin_access_control" "site" {
   name                              = "${var.domain_name}-oac"
   description                       = "OAC for ${var.domain_name} static site"
@@ -68,25 +84,34 @@ resource "aws_cloudfront_distribution" "site" {
   }
 
   default_cache_behavior {
-    target_origin_id       = "s3-${var.bucket_name}"
-    viewer_protocol_policy = "redirect-to-https"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
-    cached_methods         = ["GET", "HEAD"]
-    compress               = true
-    cache_policy_id        = data.aws_cloudfront_cache_policy.optimized.id
+    target_origin_id           = "s3-${var.bucket_name}"
+    viewer_protocol_policy     = "redirect-to-https"
+    allowed_methods            = ["GET", "HEAD", "OPTIONS"]
+    cached_methods             = ["GET", "HEAD"]
+    compress                   = true
+    cache_policy_id            = data.aws_cloudfront_cache_policy.optimized.id
+    response_headers_policy_id = data.aws_cloudfront_response_headers_policy.security.id
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.www_redirect.arn
+    }
   }
 
-  # Single-page fallback: serve index.html for any unmatched path.
+  # Real 404s. The site is a single route with no client-side routing, so an
+  # unmatched path is a missing page, not an app route to fall back on. S3
+  # behind OAC answers 403 for missing keys, so both codes map to the 404 page
+  # (public/404.html, deployed with the rest of dist/).
   custom_error_response {
     error_code         = 403
-    response_code      = 200
-    response_page_path = "/index.html"
+    response_code      = 404
+    response_page_path = "/404.html"
   }
 
   custom_error_response {
     error_code         = 404
-    response_code      = 200
-    response_page_path = "/index.html"
+    response_code      = 404
+    response_page_path = "/404.html"
   }
 
   restrictions {
