@@ -9,7 +9,7 @@ build:
 # automatically on every push to main; this stays as a local fallback.
 # Requires AWS_PROFILE=newearth-admin and `terraform -chdir=infra init` already run.
 deploy: build
-    aws s3 sync dist/ "s3://$(terraform -chdir=infra output -raw bucket)" --delete --exclude "audits/*"
+    aws s3 sync dist/ "s3://$(terraform -chdir=infra output -raw bucket)" --delete
     aws cloudfront create-invalidation \
         --distribution-id "$(terraform -chdir=infra output -raw distribution_id)" \
         --paths "/" "/index.html"

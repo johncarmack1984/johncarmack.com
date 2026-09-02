@@ -30,7 +30,6 @@ import glslint from "@/assets/img/glslint.webp";
 import lux from "@/assets/img/lux.webp";
 import manifest from "@/assets/img/manifest.webp";
 import promptward from "@/assets/img/promptward.webp";
-import seoKit from "@/assets/img/seo-kit.webp";
 import sheaf from "@/assets/img/sheaf.webp";
 import stormdeck from "@/assets/img/stormdeck.webp";
 import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
@@ -101,16 +100,6 @@ export const projects = [
     href: "https://github.com/johncarmack1984/promptward",
     platforms: [P.web],
     skills: [T.rust, T.ts, T.react, T.vite],
-    group: "LLM / AI",
-  },
-  {
-    title: "seo-kit",
-    description:
-      "Real-data SEO + GEO audits: does Google rank you, do LLMs cite you.",
-    image: seoKit,
-    href: "https://seo-kit.johncarmack.com",
-    platforms: [P.cli],
-    skills: [T.python, T.aws, T.terraform],
     group: "LLM / AI",
   },
   {
