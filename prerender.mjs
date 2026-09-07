@@ -24,7 +24,7 @@ const appHtml = render();
 // One build date for everything that carries one: the ProfilePage dateModified
 // and the sitemap lastmod. Every deploy changes the rendered page, so this is
 // honest, and it stops the hand-maintained sitemap date from going stale.
-const buildDate = new Date().toISOString().slice(0, 10);
+const buildDate = new Date().toISOString().replace(/\.\d{3}Z$/, "+00:00");
 
 // JSON-LD lives in a <script>, so escape "<" to keep "</script>" and "<!--"
 // out of the payload.
