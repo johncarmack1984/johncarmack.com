@@ -29,10 +29,11 @@ import geoDesktopBench from "@/assets/img/geo-desktop-bench.webp";
 import glslint from "@/assets/img/glslint.webp";
 import lux from "@/assets/img/lux.webp";
 import manifest from "@/assets/img/manifest.webp";
+import messageToPdf from "@/assets/img/message-to-pdf.webp";
 import promptward from "@/assets/img/promptward.webp";
-import sheaf from "@/assets/img/sheaf.webp";
-import stormdeck from "@/assets/img/stormdeck.webp";
+import sidework from "@/assets/img/sidework.webp";
 import tauriTypedIpc from "@/assets/img/tauri-typed-ipc.webp";
+import tradecn from "@/assets/img/tradecn.webp";
 import typedGeojson from "@/assets/img/typed-geojson.webp";
 import vegify from "@/assets/img/vegify.webp";
 
@@ -71,6 +72,7 @@ const P = {
 const groupOrder = [
   "LLM / AI",
   "Geospatial & GPU",
+  "Frontend",
   "Apps",
   "Infrastructure & tooling",
 ] as const;
@@ -80,18 +82,6 @@ type Group = (typeof groupOrder)[number];
 // Exported for src/lib/structured-data.ts, which turns the visible cards into
 // schema.org nodes at build time.
 export const projects = [
-  // Sheaf: prepped for launch. Delete `hidden: true` to flip it live.
-  {
-    title: "Sheaf",
-    description:
-      "Export an iMessage conversation to a keepsake PDF, all on your Mac.",
-    image: sheaf,
-    href: "https://github.com/johncarmack1984/message-to-pdf",
-    platforms: [P.macos],
-    skills: [T.rust, T.tauri, T.ts],
-    group: "Apps",
-    hidden: true,
-  },
   {
     title: "promptward",
     description:
@@ -103,26 +93,14 @@ export const projects = [
     group: "LLM / AI",
   },
   {
-    title: "Stormdeck",
+    title: "sidework",
     description:
-      "Live weather on a deck.gl map, served from the AWS free tier.",
-    image: stormdeck,
-    href: "https://stormdeck.live",
-    platforms: [P.web],
-    skills: [
-      T.rust,
-      T.ts,
-      T.react,
-      T.tailwind,
-      T.vite,
-      T.deckgl,
-      T.maplibre,
-      T.webgl,
-      T.lumagl,
-      T.aws,
-      T.cdk,
-    ],
-    group: "Geospatial & GPU",
+      "A Claude Code skill that gives each task its own git worktree beside the checkout, not inside it.",
+    image: sidework,
+    href: "https://github.com/johncarmack1984/sidework",
+    platforms: [P.cli],
+    skills: [],
+    group: "LLM / AI",
   },
   {
     title: "deck-wind-layer",
@@ -162,6 +140,16 @@ export const projects = [
     group: "Geospatial & GPU",
   },
   {
+    title: "tradecn/ui",
+    description:
+      "Trading-terminal components for shadcn/ui: grids that take a feed, prices in 32nds, order tickets.",
+    image: tradecn,
+    href: "https://tradecn.dev",
+    platforms: [P.web, P.library],
+    skills: [T.ts, T.react, T.tailwind],
+    group: "Frontend",
+  },
+  {
     title: "Lux",
     description:
       "A DMX lighting controller: multi-fixture engine, sACN streaming, cloud sync.",
@@ -181,6 +169,16 @@ export const projects = [
     appStore: "https://apps.apple.com/us/app/vegify-app/id6787673614",
     platforms: [P.web, P.ios],
     skills: [T.rust, T.axum, T.ts, T.react, T.tailwind, T.vite, T.tauri],
+    group: "Apps",
+  },
+  {
+    title: "Message to PDF",
+    description:
+      "Export an iMessage or SMS conversation to a PDF that looks like Messages, all on your Mac.",
+    image: messageToPdf,
+    href: "https://message-to-pdf.com",
+    platforms: [P.macos],
+    skills: [T.rust, T.tauri, T.ts, T.react, T.tailwind, T.aws, T.terraform],
     group: "Apps",
   },
   {
@@ -228,11 +226,9 @@ export const projects = [
   platforms: Tool[];
   skills: Tool[];
   group: Group;
-  hidden?: boolean;
 }>;
 
 export default function Projects() {
-  const visible = projects.filter((project) => !project.hidden);
   return (
     <section className="w-full py-12 md:py-24 lg:py-32" id="projects">
       <div className="container px-4 md:px-6">
@@ -241,7 +237,7 @@ export default function Projects() {
         </h2>
         <div className="mt-8 flex flex-col gap-12">
           {groupOrder.map((group) => {
-            const items = visible.filter((project) => project.group === group);
+            const items = projects.filter((project) => project.group === group);
             if (items.length === 0) return null;
             return (
               <div key={group}>

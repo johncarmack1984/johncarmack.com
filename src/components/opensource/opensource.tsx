@@ -16,18 +16,25 @@ const search = (repo: string) =>
 
 const contributions: Contribution[] = [
   {
-    project: "maplibre-gl-js",
-    repo: "maplibre/maplibre-gl-js",
-    mergedUrl: search("maplibre/maplibre-gl-js"),
-    summary:
-      "Rebuilt the benchmark suite from scratch, resolving a two-year-old open issue, then landed all three Phase 1 graphics modernization milestones — integer vertex attributes, bitwise unpacking, and texelFetch for elevation.",
-  },
-  {
     project: "martin",
     repo: "maplibre/martin",
     mergedUrl: search("maplibre/martin"),
     summary:
-      "Test harness modernization — splitting monolithic e2e tests into focused Rust modules, plus mbtiles and Postgres source discovery ports.",
+      "Tile caching, PMTiles on S3 and Lambda, tile grids beyond Web Mercator, a Rust harness for the e2e tests, and the 2.0 cleanup and migration guide.",
+  },
+  {
+    project: "maplibre-gl-js",
+    repo: "maplibre/maplibre-gl-js",
+    mergedUrl: search("maplibre/maplibre-gl-js"),
+    summary:
+      "Rebuilt the benchmark suite from scratch, resolving a two-year-old open issue, and landed all three Phase 1 graphics modernization milestones: integer vertex attributes, bitwise unpacking, and texelFetch for elevation. Most recently, custom projections for non-Mercator tile grids.",
+  },
+  {
+    project: "maplibre-agent-skills",
+    repo: "maplibre/maplibre-agent-skills",
+    mergedUrl: search("maplibre/maplibre-agent-skills"),
+    summary:
+      "Eval-gated releases for the skills that help AI coding assistants write MapLibre code, plus an upstream release watch.",
   },
   {
     project: "maplibre-native-rs",

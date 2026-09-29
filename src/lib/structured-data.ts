@@ -3,7 +3,7 @@ import { projects } from "@/components/projects/projects";
 import john from "@/assets/img/john.avif";
 
 // schema.org graph for the one page: WebSite, ProfilePage, the Person it is
-// about, and every visible project card as a software node authored by that
+// about, and every project card as a software node authored by that
 // Person. Called from prerender.mjs at build time (see entry-server.tsx) so the
 // structured data is derived from the same array that renders the cards.
 //
@@ -23,39 +23,37 @@ const absolute = (path: string) =>
   path.startsWith("http") ? path : `${SITE}${path}`;
 
 function softwareNodes() {
-  return projects
-    .filter((project) => !project.hidden)
-    .map((project) => {
-      const languages = project.skills
-        .map((skill) => skill.name)
-        .filter((name) => LANGUAGES.has(name));
-      const base = {
-        name: project.title,
-        description: project.description,
-        url: project.href,
-        image: absolute(project.image),
-        author: { "@id": PERSON_ID },
+  return projects.map((project) => {
+    const languages = project.skills
+      .map((skill) => skill.name)
+      .filter((name) => LANGUAGES.has(name));
+    const base = {
+      name: project.title,
+      description: project.description,
+      url: project.href,
+      image: absolute(project.image),
+      author: { "@id": PERSON_ID },
+    };
+    if (project.appStore) {
+      return {
+        "@type": "SoftwareApplication",
+        ...base,
+        operatingSystem: project.platforms
+          .map((platform) => platform.name)
+          .join(", "),
+        installUrl: project.appStore,
       };
-      if (project.appStore) {
-        return {
-          "@type": "SoftwareApplication",
-          ...base,
-          operatingSystem: project.platforms
-            .map((platform) => platform.name)
-            .join(", "),
-          installUrl: project.appStore,
-        };
-      }
-      if (project.href.startsWith("https://github.com/")) {
-        return {
-          "@type": "SoftwareSourceCode",
-          ...base,
-          codeRepository: project.href,
-          programmingLanguage: languages,
-        };
-      }
-      return { "@type": "SoftwareApplication", ...base };
-    });
+    }
+    if (project.href.startsWith("https://github.com/")) {
+      return {
+        "@type": "SoftwareSourceCode",
+        ...base,
+        codeRepository: project.href,
+        programmingLanguage: languages,
+      };
+    }
+    return { "@type": "SoftwareApplication", ...base };
+  });
 }
 
 export function structuredData(buildDate: string) {
@@ -90,7 +88,7 @@ export function structuredData(buildDate: string) {
         image: absolute(john),
         jobTitle: "AI/LLM & Geospatial Software Engineer",
         description:
-          "Software engineer building production LLM/AI systems and geospatial/GPU visualization with deck.gl, luma.gl, and Rust.",
+          "Software engineer building production LLM/AI systems and geospatial/GPU visualization with MapLibre, deck.gl, and Rust.",
         disambiguatingDescription:
           "John M. Carmack, a software engineer (GitHub: johncarmack1984) focused on AI/LLM and geospatial/GPU engineering. Not John D. Carmack, the id Software / Oculus founder of the same name.",
         knowsAbout: [

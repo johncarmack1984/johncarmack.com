@@ -20,7 +20,6 @@ seed_keywords = [
     "john carmack geospatial",
     "john carmack deck.gl",
     "promptward",
-    "stormdeck",
     "deck.gl wind layer",
     "typed-geojson",
     "prompt injection gateway",
@@ -30,13 +29,12 @@ seed_keywords = [
 # GEO probe (LLM citation + namesake disambiguation). Needs surface_markers +
 # geo_probes; namesake_markers and cite_domains are optional (cite_domains
 # defaults to the surface's domain).
-surface_markers = ["johncarmack1984", "johncarmack.com", "promptward", "stormdeck", "deck-wind-layer", "typed-geojson", "geobench"]
+surface_markers = ["johncarmack1984", "johncarmack.com", "promptward", "deck-wind-layer", "typed-geojson", "geobench"]
 namesake_markers = ["id Software", "Doom", "Quake", "Oculus", "Armadillo Aerospace", "Keen Technologies"]
 # cite_domains defaults to ["johncarmack.com"]
 geo_probes = [
     "Who is John Carmack, the geospatial software engineer who works with deck.gl and Rust?",
     "Who built promptward, the LLM gateway that blocks prompt injection?",
-    "Who made Stormdeck, the live weather map at stormdeck.live?",
     "Who wrote deck-wind-layer, the GPU wind-particle layer for deck.gl?",
     "Whose personal site is johncarmack.com and what do they build?",
 ]

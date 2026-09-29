@@ -9,9 +9,10 @@ function HeroText() {
       <p className="text-lg text-muted-foreground">
         I'm a software engineer focused on production LLM/AI and geospatial/GPU
         systems. Rust and TypeScript, deck.gl and luma.gl, and the cloud
-        infrastructure that runs them. Lately: primary author of a
-        safety-critical aviation desktop application, lone architect of a
-        real-time analytics platform.
+        infrastructure that runs them. Lately it's MapLibre: I'm a voting
+        member, and most of my PRs land in the Martin tile server and MapLibre
+        GL JS. Before that: primary author of a safety-critical aviation desktop
+        application, lone architect of a real-time analytics platform.
       </p>
       <p className="text-lg text-muted-foreground">
         Not the Doom guy. Different guy.
