@@ -14,7 +14,8 @@ type Contribution = {
 const search = (repo: string) =>
   `https://github.com/${repo}/pulls?q=is%3Apr+author%3Ajohncarmack1984+is%3Amerged`;
 
-const contributions: Contribution[] = [
+// Exported for src/lib/llms-txt.ts, which lists the same cards at /llms.txt.
+export const contributions: Contribution[] = [
   {
     project: "martin",
     repo: "maplibre/martin",

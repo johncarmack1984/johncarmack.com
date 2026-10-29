@@ -1,6 +1,4 @@
 User-Agent: *
 Allow: /
-# CI self-audit output (JSON + trend SVG), served but not for the index.
-Disallow: /audits/
 
 Sitemap: https://johncarmack.com/sitemap.xml

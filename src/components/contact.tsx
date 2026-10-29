@@ -8,7 +8,8 @@ type IconType = ForwardRefExoticComponent<
   IconProps & RefAttributes<SVGSVGElement>
 >;
 
-const contactLinks = [
+// Exported for src/lib/llms-txt.ts, which lists the same links at /llms.txt.
+export const contactLinks = [
   {
     Icon: LinkedInLogoIcon,
     href: "https://linkedin.com/in/johncarmack1984",
@@ -19,8 +20,10 @@ const contactLinks = [
   },
 ];
 
+// The link text is the URL without its scheme.
+export const displayHref = (href: string) => href.replace(/(^\w+:|^)\/\//, "");
+
 function ContactLink({ Icon, href }: { Icon: IconType; href: string }) {
-  const displayHref = href.replace(/(^\w+:|^)\/\//, "");
   return (
     <Button
       key={href}
@@ -29,7 +32,7 @@ function ContactLink({ Icon, href }: { Icon: IconType; href: string }) {
       asChild
     >
       <a href={href} rel="me">
-        <Icon className="inline" /> {displayHref}
+        <Icon className="inline" /> {displayHref(href)}
       </a>
     </Button>
   );
