@@ -16,7 +16,7 @@ import { resolve } from "node:path";
 const root = process.cwd();
 const indexPath = resolve(root, "dist/index.html");
 
-const { render, structuredData } = await import(
+const { render, structuredData, llmsTxt } = await import(
   resolve(root, "dist-server/entry-server.js")
 );
 const appHtml = render();
@@ -73,3 +73,29 @@ writeFileSync(
   ].join("\n"),
 );
 console.log(`prerender: wrote dist/sitemap.xml (lastmod ${buildDate})`);
+
+// /llms.txt: the page's words as Markdown for language-model crawlers (see
+// src/lib/llms-txt.ts), headed by the page's own title and description.
+const entities = {
+  "&amp;": "&",
+  "&quot;": '"',
+  "&#39;": "'",
+  "&lt;": "<",
+  "&gt;": ">",
+};
+const headText = (pattern, name) => {
+  const match = template.match(pattern);
+  if (!match) {
+    throw new Error(`prerender: expected ${name} in dist/index.html`);
+  }
+  return match[1].replace(/&(?:amp|quot|#39|lt|gt);/g, (e) => entities[e]);
+};
+const llms = llmsTxt({
+  title: headText(/<title>([^<]*)<\/title>/, "a <title>"),
+  description: headText(
+    /<meta\s+name="description"\s+content="([^"]*)"/,
+    "a meta description",
+  ),
+});
+writeFileSync(resolve(root, "dist/llms.txt"), llms);
+console.log(`prerender: wrote dist/llms.txt (${llms.length} chars)`);
