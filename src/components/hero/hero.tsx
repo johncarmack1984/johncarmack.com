@@ -2,7 +2,7 @@ import HeroImage from "@/components/hero/image";
 
 // Exported for src/lib/llms-txt.ts, which publishes the same words at /llms.txt.
 export const heroIntro =
-  "I'm a software engineer focused on production LLM/AI and geospatial/GPU systems. Rust and TypeScript, deck.gl and luma.gl, and the cloud infrastructure that runs them. Lately it's MapLibre: I'm a voting member, and most of my PRs land in the Martin tile server and MapLibre GL JS. Before that: primary author of a safety-critical aviation desktop application, lone architect of a real-time analytics platform.";
+  "I'm a software engineer, mostly in Rust and TypeScript. By day, Lead Content Distribution Engineer at Disney. My own time goes to MapLibre, where I'm a voting member and most of my PRs land in the Martin tile server, MapLibre GL JS, and MapLibre Native. Before Disney: primary author of a safety-critical aviation desktop application, lone architect of a real-time analytics platform.";
 
 function HeroText() {
   return (
